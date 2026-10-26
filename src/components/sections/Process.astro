@@ -1,0 +1,130 @@
+---
+import ProcessStep from '@/components/ui/ProcessStep';
+---
+
+<section class="relative py-16 md:py-24 bg-black w-full overflow-hidden" aria-label="Cum lucrăm">
+  <!-- Background -->
+  <div class="absolute inset-0">
+    <!-- Dark gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black via-black to-black/95"></div>
+    
+    <!-- Subtle radial gradients for depth -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle,rgba(64,255,170,0.05),transparent_70%)] blur-3xl animate-float-slow"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-[radial-gradient(circle,rgba(64,121,255,0.05),transparent_70%)] blur-3xl animate-float-slow-delayed"></div>
+    
+    <!-- Subtle grid pattern -->
+    <div class="absolute inset-0 opacity-[0.02] bg-[linear-gradient(rgba(64,255,170,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(64,255,170,0.1)_1px,transparent_1px)] bg-[size:60px_60px] md:bg-[size:80px_80px]"></div>
+  </div>
+  
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 md:mb-6 text-white">
+      Cum lucrăm?
+    </h2>
+    <p class="text-center text-white/70 mb-12 md:mb-16 max-w-2xl mx-auto text-base md:text-lg">
+      Un proces structurat și iterativ, bazat pe date și adaptat nevoilor tale specifice
+    </p>
+    
+    <div class="max-w-6xl mx-auto">
+      <ProcessStep 
+        client:only="react"
+        steps={[
+          {
+            number: 1,
+            title: 'Facem audit',
+            description: 'Analizăm ecosistemul tău de marketing actual pentru a identifica punctele forte și oportunitățile de îmbunătățire.',
+          },
+          {
+            number: 2,
+            title: 'Analizăm datele inițiale',
+            description: 'Colectăm și procesăm toate datele relevante despre business, piață și comportamentul clienților.',
+          },
+          {
+            number: 3,
+            title: 'Stabilim obiectivele',
+            description: 'Definim obiective clare, măsurabile și relevante pentru business-ul tău, aliniate cu strategia generală.',
+          },
+          {
+            number: 4,
+            title: 'Facem profil psihografic',
+            description: 'Creăm profile detaliate pentru fiecare segment de audiență, înțelegând motivațiile și comportamentele lor.',
+          },
+          {
+            number: 5,
+            title: 'Stabilim poziționarea în piață',
+            description: 'Definim poziționarea unică a brandului tău în piață, diferențiatorii cheie și propunerea de valoare.',
+          },
+          {
+            number: 6,
+            title: 'Propunem acțiuni concrete',
+            description: 'Elaborăm un plan de acțiune detaliat cu inițiative specifice, prioritizate și aliniate cu obiectivele stabilite.',
+          },
+          {
+            number: 7,
+            title: 'Executăm',
+            description: 'Implementăm strategia cu atenție la detalii, urmărind progresul și ajustând în timp real.',
+          },
+          {
+            number: 8,
+            title: 'Analizăm KPI',
+            description: 'Monitorizăm și analizăm indicatorii cheie de performanță pentru a evalua impactul acțiunilor.',
+          },
+          {
+            number: 9,
+            title: 'Reiterăm',
+            description: 'Optimizăm continuu procesul pe baza datelor, aplicând modificările necesare pentru rezultate mai bune.',
+          },
+        ]}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(30px, -40px) scale(1.05);
+    }
+  }
+
+  @keyframes float-slow-delayed {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(-30px, 40px) scale(1.05);
+    }
+  }
+
+  @keyframes grid-shift {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 80px 80px;
+    }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 20s ease-in-out infinite;
+  }
+
+  .animate-float-slow-delayed {
+    animation: float-slow-delayed 25s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .animate-grid-shift {
+    animation: grid-shift 30s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float-slow,
+    .animate-float-slow-delayed,
+    .animate-grid-shift {
+      animation: none;
+    }
+  }
+</style>

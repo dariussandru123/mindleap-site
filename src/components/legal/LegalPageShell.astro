@@ -1,0 +1,56 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { LEGAL_LAST_UPDATED } from '@/config/legal';
+import '@/styles/global.css';
+import '@/styles/legal.css';
+
+interface Props {
+  metaTitle: string;
+  metaDescription: string;
+  breadcrumbs: { name: string; href: string }[];
+  title: string;
+  lastUpdated?: Date;
+}
+
+const {
+  metaTitle,
+  metaDescription,
+  breadcrumbs,
+  title,
+  lastUpdated = LEGAL_LAST_UPDATED,
+} = Astro.props;
+---
+
+<BaseLayout title={metaTitle} description={metaDescription} breadcrumbs={breadcrumbs}>
+  <article class="legal-page">
+    <header class="legal-hero relative overflow-hidden text-white">
+      <div class="legal-hero-glow pointer-events-none absolute top-[-80px] left-1/2 -translate-x-1/2 w-[480px] h-[240px] rounded-full" aria-hidden="true"></div>
+      <div class="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="legal-eyebrow">Document legal</p>
+        <h1 class="legal-title">{title}</h1>
+        <p class="legal-updated">
+          Ultima actualizare: {lastUpdated.toLocaleDateString('ro-RO', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </p>
+      </div>
+    </header>
+
+    <div class="legal-body text-white">
+      <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <slot name="intro" />
+        <slot />
+        <footer class="legal-footer">
+          <p>
+            Acest document are caracter informativ. Nu constituie consultanță juridică. Pentru situații specifice, recomandăm consultarea unui avocat. Document actualizat la {lastUpdated.toLocaleDateString('ro-RO', { year: 'numeric', month: 'long', day: 'numeric' })}.
+          </p>
+        </footer>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  body:has(.legal-page) {
+    background: #0a0e1a;
+    color: #f5f7fa;
+  }
+</style>

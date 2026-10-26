@@ -1,0 +1,409 @@
+---
+import { serviceCategories } from '@/data/serviceCategories';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton.astro';
+---
+
+<section class="services-section" aria-label="Servicii">
+  <div class="services-section-inner">
+    <div class="services-ecosystem" id="services-ecosystem">
+      <div class="glow glow-top" aria-hidden="true"></div>
+      <div class="glow glow-bottom" aria-hidden="true"></div>
+
+      <div class="header">
+        <p class="eyebrow">Serviciile Mindleap</p>
+        <h2 class="title">Construim ecosistemul tău de marketing</h2>
+      </div>
+
+      <div id="services-tabbar" role="tablist" aria-label="Categorii servicii"></div>
+      <div id="services-panel" role="tabpanel"></div>
+      <div class="dots-wrap" id="services-dots-wrap">
+        <div id="services-dots" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="services-cta">
+      <LiquidGlassButton href="/servicii" variant="glass-secondary">
+        Vezi toate serviciile
+      </LiquidGlassButton>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ categories: serviceCategories }}>
+  const GLASS =
+    'background:linear-gradient(135deg,rgba(255,255,255,0.10),rgba(255,255,255,0.03));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:0.5px solid rgba(255,255,255,0.18);';
+  const GLASS_ACTIVE =
+    'background:linear-gradient(135deg,rgba(64,255,170,0.16),rgba(255,255,255,0.04));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:0.5px solid rgba(64,255,170,0.45);';
+
+  let active = 0;
+  const tabbar = document.getElementById('services-tabbar');
+  const panel = document.getElementById('services-panel');
+  const dots = document.getElementById('services-dots');
+  const dotsWrap = document.getElementById('services-dots-wrap');
+
+  if (!tabbar || !panel || !dots) {
+    throw new Error('Services ecosystem elements not found');
+  }
+
+  const isDesktop = () => window.matchMedia('(min-width: 1024px)').matches;
+
+  function setActive(i) {
+    active = ((i % categories.length) + categories.length) % categories.length;
+    renderTabs();
+    renderPanel();
+    renderDots();
+  }
+
+  function renderTabs() {
+    if (isDesktop()) {
+      tabbar.innerHTML = categories
+        .map(
+          (c, i) => `
+        <button type="button" data-tab="${i}" role="tab" aria-selected="${i === active}" id="tab-${c.id}"
+          style="width:100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-family:Inter,system-ui,sans-serif;${i === active ? GLASS_ACTIVE + 'box-shadow:0 0 20px rgba(64,255,170,0.22);' : 'background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.08);'}border-radius:16px;padding:18px 6px;cursor:pointer;min-height:84px;">
+          <i class="ti ${c.icon}" style="font-size:24px;color:${i === active ? '#40ffaa' : '#8A96AC'};" aria-hidden="true"></i>
+          <span style="font-size:13px;font-weight:500;color:${i === active ? '#F5F7FA' : '#8A96AC'};text-align:center;line-height:1.3;white-space:nowrap;">${c.label}</span>
+        </button>
+      `
+        )
+        .join('');
+      tabbar.style.cssText =
+        'position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-bottom:24px;';
+    } else {
+      tabbar.innerHTML = categories
+        .map(
+          (c, i) => `
+        <button type="button" data-tab="${i}" role="tab" aria-selected="${i === active}" id="tab-${c.id}"
+          style="width:100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:Inter,system-ui,sans-serif;${i === active ? GLASS_ACTIVE + 'box-shadow:0 0 18px rgba(64,255,170,0.22);' : 'background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.08);'}border-radius:14px;padding:12px 6px;cursor:pointer;min-height:64px;">
+          <i class="ti ${c.icon}" style="font-size:19px;color:${i === active ? '#40ffaa' : '#8A96AC'};" aria-hidden="true"></i>
+          <span style="font-size:10.5px;font-weight:500;color:${i === active ? '#F5F7FA' : '#8A96AC'};text-align:center;line-height:1.2;">${c.label}</span>
+        </button>
+      `
+        )
+        .join('');
+      tabbar.style.cssText =
+        'position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px;';
+    }
+    panel.setAttribute('aria-labelledby', `tab-${categories[active].id}`);
+  }
+
+  function renderDots() {
+    if (isDesktop()) {
+      dots.innerHTML = '';
+      if (dotsWrap) dotsWrap.style.display = 'none';
+      return;
+    }
+    if (dotsWrap) dotsWrap.style.display = 'flex';
+    dots.innerHTML = categories
+      .map(
+        (_, i) =>
+          `<span style="width:6px;height:6px;border-radius:50%;background:${i === active ? '#40ffaa' : 'rgba(255,255,255,0.15)'};"></span>`
+      )
+      .join('');
+  }
+
+  function renderPanelDesktop(c) {
+    panel.innerHTML = `
+      <div style="${GLASS}border-radius:24px;padding:36px 40px;box-shadow:0 8px 32px rgba(0,0,0,0.3),0 0 28px rgba(64,255,170,0.06);display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;font-family:Inter,system-ui,sans-serif;">
+        <div>
+          <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;min-height:68px;">
+            <div style="width:46px;height:46px;border-radius:14px;${GLASS_ACTIVE}display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="ti ${c.icon}" style="font-size:22px;color:#40ffaa;" aria-hidden="true"></i>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;min-height:46px;">
+              <span style="font-size:12px;font-weight:500;color:#BFFFE0;background:rgba(64,255,170,0.10);border:0.5px solid rgba(64,255,170,0.25);padding:6px 12px;border-radius:20px;white-space:nowrap;">${c.tag1}</span>
+              <span style="font-size:12px;font-weight:500;color:#BFFFE0;background:rgba(64,255,170,0.10);border:0.5px solid rgba(64,255,170,0.25);padding:6px 12px;border-radius:20px;white-space:nowrap;">${c.tag2}</span>
+            </div>
+          </div>
+          <h3 style="font-size:26px;font-weight:500;color:#F5F7FA;margin:0 0 12px;">${c.title}</h3>
+          <p style="font-size:15px;line-height:1.7;color:#A8B4C8;margin:0 0 24px;max-width:420px;min-height:78px;">${c.description}</p>
+          <div style="display:flex;gap:10px;">
+            <button type="button" data-nav="prev" aria-label="Categoria anterioară" style="width:38px;height:38px;border-radius:50%;${GLASS}color:#F5F7FA;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <i class="ti ti-arrow-left" style="font-size:18px;" aria-hidden="true"></i>
+            </button>
+            <button type="button" data-nav="next" aria-label="Categoria următoare" style="width:38px;height:38px;border-radius:50%;${GLASS}color:#F5F7FA;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <i class="ti ti-arrow-right" style="font-size:18px;" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+        <div style="${GLASS}border-radius:18px;padding:18px 18px 20px;">
+          <p style="font-size:14px;font-weight:500;color:#F5F7FA;margin:0 0 14px;">${c.screen.section}</p>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            ${c.screen.rows
+              .map(
+                (r) => `
+              <div style="background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;">
+                <span style="width:5px;height:5px;border-radius:50%;background:#40ffaa;flex-shrink:0;"></span>
+                <span style="font-size:13px;color:#C5CEDC;">${r}</span>
+              </div>
+            `
+              )
+              .join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderPanelMobile(c) {
+    panel.innerHTML = `
+      <div style="${GLASS}border-radius:20px;padding:20px 18px;box-shadow:0 8px 32px rgba(0,0,0,0.3),0 0 24px rgba(64,255,170,0.06);font-family:Inter,system-ui,sans-serif;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+          <div style="width:38px;height:38px;border-radius:12px;${GLASS_ACTIVE}display:flex;align-items:center;justify-content:center;">
+            <i class="ti ${c.icon}" style="font-size:18px;color:#40ffaa;" aria-hidden="true"></i>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button type="button" data-nav="prev" aria-label="Categoria anterioară" style="width:32px;height:32px;border-radius:50%;${GLASS}color:#F5F7FA;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <i class="ti ti-arrow-left" style="font-size:16px;" aria-hidden="true"></i>
+            </button>
+            <button type="button" data-nav="next" aria-label="Categoria următoare" style="width:32px;height:32px;border-radius:50%;${GLASS}color:#F5F7FA;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <i class="ti ti-arrow-right" style="font-size:16px;" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+          <span style="font-size:11.5px;font-weight:500;color:#BFFFE0;background:rgba(64,255,170,0.10);border:0.5px solid rgba(64,255,170,0.25);padding:6px 12px;border-radius:20px;">${c.tag1}</span>
+          <span style="font-size:11.5px;font-weight:500;color:#BFFFE0;background:rgba(64,255,170,0.10);border:0.5px solid rgba(64,255,170,0.25);padding:6px 12px;border-radius:20px;">${c.tag2}</span>
+        </div>
+        <h3 style="font-size:20px;font-weight:500;color:#F5F7FA;margin:0 0 8px;">${c.title}</h3>
+        <p style="font-size:13px;line-height:1.65;color:#A8B4C8;margin:0 0 20px;">${c.description}</p>
+        <div style="${GLASS}border-radius:16px;padding:14px 14px 16px;">
+          <p style="font-size:13px;font-weight:500;color:#F5F7FA;margin:0 0 10px;">${c.screen.section}</p>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            ${c.screen.rows
+              .map(
+                (r) => `
+              <div style="background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.08);border-radius:10px;padding:9px 12px;display:flex;align-items:center;gap:8px;">
+                <span style="width:4px;height:4px;border-radius:50%;background:#40ffaa;flex-shrink:0;"></span>
+                <span style="font-size:12px;color:#C5CEDC;">${r}</span>
+              </div>
+            `
+              )
+              .join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderPanel() {
+    const c = categories[active];
+    if (isDesktop()) {
+      renderPanelDesktop(c);
+    } else {
+      renderPanelMobile(c);
+    }
+  }
+
+  function updateContainerLayout() {
+    const el = document.getElementById('services-ecosystem');
+    if (!el) return;
+    if (isDesktop()) {
+      el.style.cssText =
+        'background:radial-gradient(circle at 25% 0%,#16332B 0%,#0A0E1A 55%);border-radius:24px;padding:56px 48px;position:relative;overflow:hidden;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;max-width:none;margin:0;';
+    } else {
+      el.style.cssText =
+        'background:radial-gradient(circle at 30% 0%,#16332B 0%,#0A0E1A 55%);border-radius:20px;padding:28px 16px 32px;max-width:380px;margin:0 auto;position:relative;overflow:hidden;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;';
+    }
+  }
+
+  tabbar.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-tab]');
+    if (!btn) return;
+    setActive(parseInt(btn.dataset.tab, 10));
+  });
+
+  panel.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-nav]');
+    if (!btn) return;
+    setActive(active + (btn.dataset.nav === 'next' ? 1 : -1));
+  });
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      updateContainerLayout();
+      renderTabs();
+      renderPanel();
+      renderDots();
+    }, 150);
+  });
+
+  updateContainerLayout();
+  setActive(0);
+</script>
+
+<style>
+  .services-section {
+    padding: 4rem 0;
+    background: #000;
+    width: 100%;
+    overflow: hidden;
+    font-family: Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (min-width: 768px) {
+    .services-section {
+      padding: 6rem 0;
+    }
+  }
+
+  .services-section-inner {
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .services-section-inner {
+      padding: 0 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-section-inner {
+      padding: 0 2rem;
+    }
+  }
+
+  .services-ecosystem {
+    position: relative;
+    overflow: hidden;
+    font-family: Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .glow-top {
+    top: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    background: rgba(64, 255, 170, 0.16);
+    filter: blur(44px);
+  }
+
+  .glow-bottom {
+    bottom: -80px;
+    left: -60px;
+    width: 200px;
+    height: 200px;
+    background: rgba(64, 255, 170, 0.08);
+    filter: blur(44px);
+  }
+
+  @media (min-width: 1024px) {
+    .glow-top {
+      top: -100px;
+      right: -80px;
+      width: 340px;
+      height: 340px;
+      background: rgba(64, 255, 170, 0.14);
+      filter: blur(60px);
+    }
+
+    .glow-bottom {
+      bottom: -120px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: rgba(64, 255, 170, 0.07);
+      filter: blur(60px);
+    }
+  }
+
+  .header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 0 8px;
+  }
+
+  @media (min-width: 1024px) {
+    .header {
+      max-width: 640px;
+      margin: 0 auto 36px;
+      padding: 0;
+    }
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #40ffaa;
+    margin: 0 0 10px;
+    font-family: Inter, system-ui, sans-serif;
+  }
+
+  @media (min-width: 1024px) {
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      margin: 0 0 14px;
+    }
+  }
+
+  .title {
+    font-size: 19px;
+    font-weight: 500;
+    color: #f5f7fa;
+    margin: 0;
+    line-height: 1.35;
+    text-wrap: balance;
+    font-family: Inter, system-ui, sans-serif;
+  }
+
+  @media (min-width: 1024px) {
+    .title {
+      font-size: 28px;
+    }
+  }
+
+  .dots-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    .dots-wrap {
+      display: none;
+    }
+  }
+
+  #services-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .services-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  /* Tabler Icons — font corect */
+  .services-ecosystem :global(.ti) {
+    font-family: tabler-icons !important;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    speak: never;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+</style>

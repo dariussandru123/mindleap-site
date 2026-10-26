@@ -1,0 +1,137 @@
+---
+import type { CaseStudyListing } from '@/data/caseStudies';
+
+interface Props {
+  study: CaseStudyListing;
+}
+
+const { study } = Astro.props;
+const href = `/studii-de-caz/${study.slug}`;
+const logoBox = study.logoBox ?? 'h-20 md:h-24 w-36 md:w-40';
+const logoImg = study.logoHeight ?? 'h-14 md:h-16 max-h-full';
+---
+
+<a href={href} class="case-study-card group block">
+  <div class={`case-study-card-logo ${logoBox}`}>
+    <img
+      src={study.logo}
+      alt={`Logo ${study.name}`}
+      class={`${logoImg} w-auto object-contain`}
+      width="240"
+      height="96"
+      loading="lazy"
+    />
+  </div>
+  <div class="case-study-card-body">
+    <h3 class="case-study-card-title">{study.name}</h3>
+    <p class="case-study-card-tagline">{study.tagline}</p>
+    <p class="case-study-card-summary">{study.summary}</p>
+  </div>
+  <i class="ti ti-arrow-right case-study-card-arrow" aria-hidden="true"></i>
+</a>
+
+<style>
+  .case-study-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.35rem 1.5rem;
+    background: #f8faf9;
+    border: 1px solid rgba(10, 14, 26, 0.08);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    text-decoration: none;
+  }
+
+  @media (min-width: 768px) {
+    .case-study-card {
+      flex-direction: row;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem 1.75rem;
+    }
+  }
+
+  .case-study-card:hover {
+    border-color: rgba(64, 255, 170, 0.45);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(64, 255, 170, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .case-study-card-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: #ffffff;
+    border: 1px solid rgba(10, 14, 26, 0.06);
+    border-radius: 14px;
+    padding: 0.75rem 1rem;
+    min-height: 5.5rem;
+    width: 100%;
+    max-width: 11rem;
+  }
+
+  @media (min-width: 768px) {
+    .case-study-card-logo {
+      width: 10rem;
+      min-height: 6rem;
+    }
+  }
+
+  .case-study-card-body {
+    flex: 1;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .case-study-card-body {
+      text-align: left;
+    }
+  }
+
+  .case-study-card-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #0a0e1a;
+    margin-bottom: 0.35rem;
+    transition: color 0.2s ease;
+  }
+
+  @media (min-width: 768px) {
+    .case-study-card-title {
+      font-size: 1.25rem;
+    }
+  }
+
+  .case-study-card:hover .case-study-card-title {
+    color: #128f5a;
+  }
+
+  .case-study-card-tagline {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #128f5a;
+    margin-bottom: 0.5rem;
+  }
+
+  .case-study-card-summary {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgba(10, 14, 26, 0.65);
+  }
+
+  .case-study-card-arrow {
+    flex-shrink: 0;
+    font-size: 1.25rem;
+    color: rgba(10, 14, 26, 0.35);
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .case-study-card:hover .case-study-card-arrow {
+    color: #128f5a;
+    transform: translateX(3px);
+  }
+</style>

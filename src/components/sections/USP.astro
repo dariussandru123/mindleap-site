@@ -1,0 +1,264 @@
+---
+const usps = [
+  {
+    title: 'Claritate înainte de marketing',
+    description: 'Identificăm exact blocajul real din business înainte să cheltui bani pe execuție.',
+  },
+  {
+    title: 'Direcție concretă, nu experimente',
+    description: 'Construim un traseu logic de creștere, nu o colecție de tactici testate la noroc.',
+  },
+  {
+    title: 'Execuție fără bullshit',
+    description: 'Facem doar ce are impact direct. Restul se elimină.',
+  },
+];
+---
+
+<section class="why-section" id="usp" aria-label="De ce să ne alegi">
+  <div class="why-section-inner">
+    <div class="why-section-card">
+      <div class="glow glow-top" aria-hidden="true"></div>
+      <div class="glow glow-bottom" aria-hidden="true"></div>
+
+      <h2 class="why-title">De ce să ne alegi?</h2>
+
+      <div class="why-grid">
+        {usps.map((usp, index) => (
+          <article
+            class="why-reason"
+            style={{
+              opacity: 0,
+              animation: `fadeInUp 0.6s ease-out ${index * 0.1}s forwards`,
+            }}
+          >
+            <div class="icon-frame" aria-hidden="true">
+              {index === 0 && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2" />
+                  <circle cx="16" cy="16" r="6" stroke="currentColor" stroke-width="2" />
+                  <circle cx="16" cy="16" r="1.6" fill="currentColor" />
+                </svg>
+              )}
+              {index === 1 && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2" />
+                  <path d="M21 11L17.2 17.2L11 21L14.8 14.8L21 11Z" fill="currentColor" />
+                </svg>
+              )}
+              {index === 2 && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path d="M17.5 4L8 18H14.5L13.5 28L23 13.5H16.5L17.5 4Z" fill="currentColor" />
+                </svg>
+              )}
+            </div>
+            <h3 class="reason-title">{usp.title}</h3>
+            <p class="reason-desc">{usp.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-section {
+    padding: 2.5rem 0;
+    background: #000;
+    width: 100%;
+    overflow: hidden;
+    scroll-margin-top: 5rem;
+    font-family: Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (min-width: 768px) {
+    .why-section {
+      padding: 6rem 0;
+    }
+  }
+
+  .why-section-inner {
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .why-section-inner {
+      padding: 0 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .why-section-inner {
+      padding: 0 2rem;
+    }
+  }
+
+  .why-section-card {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 30% 0%, #16332b 0%, #0a0e1a 55%);
+    border-radius: 20px;
+    padding: 3rem 1rem 2rem;
+    font-family: Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (min-width: 1024px) {
+    .why-section-card {
+      background: radial-gradient(circle at 25% 0%, #16332b 0%, #0a0e1a 55%);
+      border-radius: 24px;
+      padding: 3.5rem 3rem;
+    }
+  }
+
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .glow-top {
+    top: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    background: rgba(64, 255, 170, 0.16);
+    filter: blur(44px);
+  }
+
+  .glow-bottom {
+    bottom: -80px;
+    left: -60px;
+    width: 200px;
+    height: 200px;
+    background: rgba(64, 255, 170, 0.08);
+    filter: blur(44px);
+  }
+
+  @media (min-width: 1024px) {
+    .glow-top {
+      top: -100px;
+      right: -80px;
+      width: 340px;
+      height: 340px;
+      background: rgba(64, 255, 170, 0.14);
+      filter: blur(60px);
+    }
+
+    .glow-bottom {
+      bottom: -120px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: rgba(64, 255, 170, 0.07);
+      filter: blur(60px);
+    }
+  }
+
+  .why-title {
+    position: relative;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #f5f7fa;
+    margin: 0 0 2.5rem;
+    line-height: 1.35;
+    text-wrap: balance;
+  }
+
+  @media (min-width: 768px) {
+    .why-title {
+      font-size: 1.75rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .why-title {
+      font-size: 1.75rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .why-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .why-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+  }
+
+  .why-reason {
+    text-align: center;
+  }
+
+  .icon-frame {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 22px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(64, 255, 170, 0.18), rgba(255, 255, 255, 0.04));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 0.5px solid rgba(64, 255, 170, 0.4);
+    box-shadow:
+      0 0 28px rgba(64, 255, 170, 0.18),
+      inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #40ffaa;
+  }
+
+  .reason-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: #40ffaa;
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .reason-desc {
+    font-size: 0.84375rem;
+    line-height: 1.6;
+    color: #a8b4c8;
+    margin: 0 auto;
+    max-width: 260px;
+  }
+
+  @media (min-width: 768px) {
+    .reason-desc {
+      font-size: 0.875rem;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .why-reason {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+  }
+</style>

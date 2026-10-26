@@ -1,0 +1,24 @@
+---
+import '@/styles/global.css';
+import AdminDashboard from '@/components/admin/AdminDashboard.tsx';
+---
+
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://mindleap.ro/admin" />
+    <title>Admin | Mindleap</title>
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body class="bg-neutral-950 antialiased">
+    <main class="min-h-screen pt-12 pb-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <h1 class="text-2xl font-bold text-white mb-8">Admin Dashboard</h1>
+        <AdminDashboard client:only="react" />
+      </div>
+    </main>
+  </body>
+</html>

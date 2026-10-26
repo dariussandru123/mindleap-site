@@ -1,0 +1,244 @@
+---
+import { MAIN_SERVICES, SERVICES } from '@/config/site';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton.astro';
+---
+
+<section class="relative py-16 md:py-24 w-full overflow-hidden" aria-label="Servicii">
+  <!-- Apple-style Liquid Glass Background -->
+  <div class="absolute inset-0">
+    <!-- Base gradient - subtle and natural -->
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50/80"></div>
+    
+    <!-- Soft color accents - very subtle -->
+    <div class="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-br from-blue-50/30 via-transparent to-transparent"></div>
+    <div class="absolute bottom-0 right-0 w-full h-1/3 bg-gradient-to-tl from-purple-50/20 via-transparent to-transparent"></div>
+    
+    <!-- Very subtle mesh gradients -->
+    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-[radial-gradient(circle,rgba(64,121,255,0.08),transparent_70%)] rounded-full blur-3xl opacity-60 animate-float-slow-services"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[radial-gradient(circle,rgba(147,51,234,0.06),transparent_70%)] rounded-full blur-3xl opacity-60 animate-float-slow-delayed-services"></div>
+    
+    <!-- Ultra-subtle grid pattern -->
+    <div class="absolute inset-0 opacity-[0.02] bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
+    
+    <!-- Light vignette effect -->
+    <div class="absolute inset-0 bg-radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.01)_100%)"></div>
+  </div>
+  
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto mb-12 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-black text-balance">
+        Serviciile noastre
+      </h2>
+      <p class="text-xl text-black/70 leading-relaxed">
+        Soluții complete de marketing digital adaptate nevoilor business-ului tău
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      {MAIN_SERVICES.map((service, index) => {
+        const category = SERVICES[service.id as keyof typeof SERVICES];
+        return (
+          <article class="h-full flex flex-col service-card opacity-0 translate-y-8" style={`animation-delay: ${index * 0.1}s;`}>
+            <div class="h-full p-6 md:p-8 liquid-glass-card hover:scale-[1.02] transition-all duration-500 ease-out flex flex-col group relative overflow-hidden">
+              <!-- Apple-style light reflection -->
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                <div class="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/20 via-white/5 to-transparent rounded-t-2xl"></div>
+                <div class="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-white/15 to-transparent rounded-l-2xl"></div>
+              </div>
+              
+              <!-- Subtle inner glow -->
+              <div class="absolute inset-[1px] rounded-2xl bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+              
+              <!-- Icon Container - Apple SF Symbols Style -->
+              <div class="mb-4 md:mb-6 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-black/5 backdrop-blur-sm border border-black/10 group-hover:bg-black/10 group-hover:border-black/20 transition-all duration-300 relative z-10">
+                <div class="text-black group-hover:scale-110 transition-transform duration-300">
+                  {service.id === 'crestere-organica' ? (
+                    <!-- Chart trending up - Simple Apple SF Symbols style -->
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22a.75.75 0 00-.564-1.385l-2.74 1.22a13.5 13.5 0 00-6.814 6.23L9 11.25 2.25 18z" />
+                    </svg>
+                  ) : service.id === 'campanii-platite' ? (
+                    <!-- Megaphone - Simplified Apple SF Symbols style -->
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 01-1.44-4.282m3.102.069a18.03 18.03 0 01-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 018.835 2.535M10.34 6.66a23.847 23.847 0 008.835-2.535m0 0A23.74 23.74 0 0018.795 3m.38 1.125a23.91 23.91 0 011.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 001.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 010 3.46" />
+                    </svg>
+                  ) : service.id === 'creative' ? (
+                    <!-- Sparkles - Apple SF Symbols style -->
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                    </svg>
+                  ) : service.id === 'consultanta' ? (
+                    <!-- Sparkles/Stars - Apple SF Symbols style for consulting -->
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                    </svg>
+                  ) : null}
+                </div>
+              </div>
+              
+              <h3 class="text-xl md:text-2xl font-semibold mb-3 md:mb-4 text-black leading-tight relative z-10">{service.name}</h3>
+              <p class="text-black/70 mb-6 flex-grow leading-relaxed text-sm md:text-base relative z-10">{category.description}</p>
+              <LiquidGlassButton href={service.href} variant="glass-secondary" size="sm">
+                Află mai mult
+              </LiquidGlassButton>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+    <div class="text-center mt-12">
+      <LiquidGlassButton href="/servicii" variant="glass-primary">
+        Vezi toate serviciile
+      </LiquidGlassButton>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .service-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  /* Apple Liquid Glass card styles */
+  .liquid-glass-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border: 0.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    will-change: transform, box-shadow, background;
+  }
+
+  .liquid-glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 0.5px;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .liquid-glass-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    border-radius: 20px 20px 0 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent);
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .liquid-glass-card:hover {
+    background: rgba(255, 255, 255, 0.75);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 
+      0 16px 48px rgba(0, 0, 0, 0.12),
+      0 4px 16px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .liquid-glass-card:hover::after {
+    opacity: 0.6;
+  }
+
+  /* Apple-style subtle background animations */
+  @keyframes float-slow-services {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translate(20px, -30px) scale(1.05);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes float-slow-delayed-services {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translate(-20px, 30px) scale(1.05);
+      opacity: 0.8;
+    }
+  }
+
+  .animate-float-slow-services {
+    animation: float-slow-services 25s ease-in-out infinite;
+  }
+
+  .animate-float-slow-delayed-services {
+    animation: float-slow-delayed-services 30s ease-in-out infinite;
+    animation-delay: 4s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-card {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    
+    .animate-float-slow-services,
+    .animate-float-slow-delayed-services {
+      animation: none;
+      opacity: 0.6;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    serviceCards.forEach((card) => {
+      observer.observe(card);
+    });
+  });
+</script>

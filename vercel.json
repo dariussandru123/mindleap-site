@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.mindleap.ro" }],
+      "destination": "https://mindleap.ro/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/llm.txt",
+      "destination": "/llms.txt",
+      "permanent": true
+    }
+  ]
+}

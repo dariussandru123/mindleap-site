@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<!--
+  Mindleap XML Sitemap
+  Canonical origin: https://mindleap.ro
+  Generated: 2026-07-11T18:52:05.099Z
+  URLs: 16
+  Human view: open /sitemap.xml in browser (styled via sitemap.xsl)
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Acasa | Principal -->
+  <url>
+    <loc>https://mindleap.ro/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Contact | Principal -->
+  <url>
+    <loc>https://mindleap.ro/contact</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Servicii | Principal -->
+  <url>
+    <loc>https://mindleap.ro/servicii</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Despre noi | Brand -->
+  <url>
+    <loc>https://mindleap.ro/despre-noi</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Studii de caz | Dovada sociala -->
+  <url>
+    <loc>https://mindleap.ro/studii-de-caz</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Bubble Kids | Studiu de caz -->
+  <url>
+    <loc>https://mindleap.ro/studii-de-caz/bubble-kids</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Coldea Expert Construct | Studiu de caz -->
+  <url>
+    <loc>https://mindleap.ro/studii-de-caz/coldea-expert-construct</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Stereographic | Studiu de caz -->
+  <url>
+    <loc>https://mindleap.ro/studii-de-caz/stereographic</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Resurse | Continut -->
+  <url>
+    <loc>https://mindleap.ro/resurse</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- Politica cookies | Legal -->
+  <url>
+    <loc>https://mindleap.ro/legal/cookies</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+
+  <!-- Politica confidentialitate | Legal -->
+  <url>
+    <loc>https://mindleap.ro/legal/politica-confidentialitate</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+
+  <!-- Termeni si conditii | Legal -->
+  <url>
+    <loc>https://mindleap.ro/legal/termeni-si-conditii</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+
+  <!-- Personalizeaza cookie-uri | Legal -->
+  <url>
+    <loc>https://mindleap.ro/legal/personalizeaza-cookie-uri</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.25</priority>
+  </url>
+
+  <!-- Brandul tau apare în ChatGPT? Cum monitorizezi și îmbunătățești vizibilitatea în motoarele de căutare AI | Blog -->
+  <url>
+    <loc>https://mindleap.ro/resurse/blog/vizibilitate-ai-search</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <!-- MQL vs. SQL: diferențele care fac diferența în creșterea veniturilor | Blog -->
+  <url>
+    <loc>https://mindleap.ro/resurse/blog/mql-vs-sql</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <!-- The Mere Exposure Effect: de ce social media funcționează chiar și când nu vinzi direct | Blog -->
+  <url>
+    <loc>https://mindleap.ro/resurse/blog/mere-exposure-effect</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+</urlset>

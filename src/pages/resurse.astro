@@ -1,0 +1,85 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton.astro';
+import ResurseDownloads from '@/components/interactive/ResurseDownloads';
+import BlogCarousel from '@/components/blog/BlogCarousel';
+import { getPublishedBlogPosts } from '@/data/blogPosts';
+import '@/styles/global.css';
+import '@/styles/resurse.css';
+import '@/styles/blog.css';
+
+const breadcrumbs = [
+  { name: 'Acasă', href: '/' },
+  { name: 'Resurse', href: '/resurse' },
+];
+
+const allPosts = await getPublishedBlogPosts();
+const blogCarouselPosts = allPosts.map((post) => ({
+  slug: post.slug,
+  title: post.title,
+  excerpt: post.excerpt,
+  readTime: post.readTime,
+  icon: post.icon,
+  published: post.published,
+}));
+---
+
+<BaseLayout
+  title="Resurse - Mindleap"
+  description="Scurtături care-ți cumpără timp: articole, template-uri și checklist-uri pe care le aplici azi, nu le salvezi pentru mai târziu."
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero -->
+  <section class="resurse-hero relative w-full pt-20 pb-10 md:pt-32 md:pb-20 text-white overflow-hidden">
+    <div class="resurse-hero-glow pointer-events-none absolute top-[-60px] left-1/2 -translate-x-1/2 w-[360px] h-[200px] rounded-full" aria-hidden="true"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-5 text-balance leading-tight">
+        Scurtături care-ți cumpără timp
+      </h1>
+      <p class="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl mx-auto text-balance leading-relaxed">
+        Nu teorie pe care s-o citești „cândva". Articole, template-uri și checklist-uri pe care le aplici azi.
+      </p>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog" class="resurse-section relative py-16 md:py-24 w-full text-white overflow-hidden scroll-mt-24">
+    <div class="pointer-events-none absolute top-0 left-0 w-full md:w-1/2 h-full" style="background: radial-gradient(circle at 30% 40%, rgba(64,255,170,0.10), transparent 50%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <BlogCarousel
+        client:visible
+        posts={blogCarouselPosts}
+        eyebrow="Blog — ca să înțelegi de ce"
+        title="Articole de blog"
+        subtitle="Nu liste de tactici. Explicații pentru ce funcționează și de ce, ca să poți decide singur ce are sens pentru businessul tău."
+      />
+    </div>
+  </section>
+
+  <ResurseDownloads client:visible />
+
+  <!-- CTA -->
+  <section class="resurse-cta relative py-16 md:py-24 text-white w-full overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(64,255,170,0.08), transparent 70%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-balance">
+        Resursele te ajută să înțelegi. Noi te ajutăm să execuți.
+      </h2>
+      <p class="text-base sm:text-lg md:text-xl text-white/70 mb-8 md:mb-10 max-w-2xl mx-auto text-balance">
+        Dacă ai citit, ai descărcat și ai aplicat, dar vrei pe cineva care construiește sistemul cu tine, hai să vorbim.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3.5 justify-center items-center flex-wrap">
+        <LiquidGlassButton href="/contact" variant="glass-primary">
+          Contactează-ne
+        </LiquidGlassButton>
+        <LiquidGlassButton href="/servicii" variant="glass-secondary">
+          Vezi serviciile
+        </LiquidGlassButton>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

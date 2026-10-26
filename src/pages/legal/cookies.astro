@@ -1,0 +1,171 @@
+---
+import LegalOperatorCard from '@/components/legal/LegalOperatorCard.astro';
+import LegalPageShell from '@/components/legal/LegalPageShell.astro';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton.astro';
+import { SITE } from '@/config/site';
+import { CONTACT_EMAIL } from '@/config/legal';
+
+const breadcrumbs = [
+  { name: 'Acasă', href: '/' },
+  { name: 'Politica Cookies', href: '/legal/cookies' },
+];
+
+const { company } = SITE;
+---
+
+<LegalPageShell
+  metaTitle="Politică Cookies - Mindleap"
+  metaDescription="Politica de utilizare a cookie-urilor pe site-ul MINDLEAP STRATEGIES SRL, conform GDPR și Directivei ePrivacy."
+  breadcrumbs={breadcrumbs}
+  title="Politică Cookies"
+>
+  <div slot="intro" class="legal-card legal-intro">
+    <p>
+      {company.legalName} utilizează cookie-uri și tehnologii similare pe <strong>mindleap.ro</strong> pentru funcționarea site-ului, analiză și, cu consimțământul dvs., marketing. Această politică explică ce folosim, de ce și cum puteți controla preferințele.
+    </p>
+  </div>
+
+  <div class="legal-content">
+    <section class="legal-section">
+      <h2>1. Ce sunt cookie-urile?</h2>
+      <div class="legal-prose">
+        <p>
+          Cookie-urile sunt fișiere text mici stocate pe dispozitivul dvs. (computer, tabletă, telefon) când vizitați un site. Ele permit memorarea preferințelor, menținerea sesiunii sau analiza modului de utilizare a site-ului.
+        </p>
+        <p>Tehnologii similare includ local storage, pixeli de urmărire și identificatori de dispozitiv.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>2. Operatorul și cadru legal</h2>
+      <LegalOperatorCard />
+      <div class="legal-prose mt-4">
+        <p>
+          Utilizarea cookie-urilor se face în conformitate cu Regulamentul (UE) 2016/679 (GDPR), Directiva 2002/58/CE (ePrivacy), Legea nr. 190/2018 și legislația română aplicabilă. Pentru datele personale asociate cookie-urilor, consultați și <a href="/legal/politica-confidentialitate" class="legal-link">Politica de confidențialitate</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>3. Tipuri de cookie-uri utilizate</h2>
+      <div class="legal-card">
+        <div class="legal-cookie-type">
+          <h3>3.1. Strict necesare / securitate</h3>
+          <div class="legal-prose">
+            <p>Esențiale pentru funcționarea site-ului. Nu necesită consimțământ.</p>
+            <ul>
+              <li>preferințe cookie (stocarea alegerilor dvs.);</li>
+              <li>securitate și prevenirea abuzurilor;</li>
+              <li>echilibrare trafic / sesiune.</li>
+            </ul>
+            <p><strong>Durată:</strong> sesiune sau până la 12 luni.</p>
+          </div>
+        </div>
+
+        <div class="legal-cookie-type">
+          <h3>3.2. Performanță / analitică</h3>
+          <div class="legal-prose">
+            <p>Ne ajută să înțelegem cum este utilizat site-ul (pagini vizitate, surse trafic, erori). Active doar cu consimțământ.</p>
+            <ul>
+              <li>Google Analytics (dacă este activat);</li>
+              <li>metrici agregate de performanță.</li>
+            </ul>
+            <p><strong>Durată:</strong> până la 24 luni.</p>
+          </div>
+        </div>
+
+        <div class="legal-cookie-type">
+          <h3>3.3. Marketing / publicitate</h3>
+          <div class="legal-prose">
+            <p>Utilizate pentru măsurarea campaniilor, remarketing și personalizare. Active doar cu consimțământ.</p>
+            <ul>
+              <li>Google Ads, Meta (Facebook/Instagram), LinkedIn, TikTok;</li>
+              <li>pixeli și tag-uri de conversie.</li>
+            </ul>
+            <p><strong>Durată:</strong> până la 24 luni.</p>
+          </div>
+        </div>
+
+        <div class="legal-cookie-type">
+          <h3>3.4. Funcționale</h3>
+          <div class="legal-prose">
+            <p>Memorează alegeri pentru o experiență îmbunătățită (ex. limbă, regiune). Active doar cu consimțământ, dacă nu sunt strict necesare.</p>
+            <p><strong>Durată:</strong> până la 12 luni.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>4. Cookie-uri terțe</h2>
+      <div class="legal-prose">
+        <p>Furnizori terți pot seta propriile cookie-uri:</p>
+        <ul>
+          <li><strong>Google</strong> — Analytics, Tag Manager, Ads;</li>
+          <li><strong>Meta</strong> — Facebook, Instagram;</li>
+          <li><strong>LinkedIn, TikTok</strong> — publicitate și analiză;</li>
+          <li><strong>furnizori hosting / CDN</strong> — funcționare tehnică.</li>
+        </ul>
+        <p>Fiecare terț are propria politică de confidențialitate. Nu controlăm integral practicile lor.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>5. Gestionarea preferințelor</h2>
+      <div class="legal-prose">
+        <p>Puteți gestiona cookie-urile în orice moment:</p>
+        <ul>
+          <li><strong>banner cookie</strong> — la prima vizită sau când reveniți;</li>
+          <li><strong>pagina de personalizare</strong> — <a href="/legal/personalizeaza-cookie-uri" class="legal-link">Personalizează cookie-uri</a>;</li>
+          <li><strong>setările browserului</strong> — ștergere sau blocare cookie-uri.</li>
+        </ul>
+        <p>Refuzul cookie-urilor opționale nu blochează accesul la site, dar unele funcții (analiză, personalizare) pot fi limitate.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>6. Gestionarea prin browser</h2>
+      <div class="legal-prose">
+        <p>Majoritatea browserelor permit blocarea sau ștergerea cookie-urilor:</p>
+        <ul>
+          <li><strong>Chrome:</strong> Setări → Confidențialitate și securitate → Cookie-uri</li>
+          <li><strong>Firefox:</strong> Opțiuni → Confidențialitate și securitate</li>
+          <li><strong>Safari:</strong> Preferințe → Confidențialitate</li>
+          <li><strong>Edge:</strong> Setări → Cookie-uri și permisiuni site</li>
+        </ul>
+        <p>Dezactivarea tuturor cookie-urilor poate afecta funcționalitatea site-ului.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>7. Durata de viață</h2>
+      <div class="legal-prose">
+        <ul>
+          <li><strong>cookie-uri de sesiune</strong> — se șterg la închiderea browserului;</li>
+          <li><strong>cookie-uri persistente</strong> — rămân până la expirare sau ștergere manuală.</li>
+        </ul>
+        <p>Durata exactă depinde de tipul cookie-ului și de furnizorul terț.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>8. Actualizări</h2>
+      <div class="legal-prose">
+        <p>Putem actualiza această politică pentru a reflecta schimbări tehnice, legislative sau operaționale. Versiunea curentă este publicată pe această pagină.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>9. Contact</h2>
+      <div class="legal-card">
+        <p class="legal-muted">Pentru întrebări privind cookie-urile sau datele personale:</p>
+        <p class="legal-muted"><strong>Email:</strong> <a href={`mailto:${CONTACT_EMAIL}`} class="legal-link">{CONTACT_EMAIL}</a></p>
+        <p class="legal-muted"><strong>Telefon:</strong> <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} class="legal-link">{SITE.phone}</a></p>
+        <div class="legal-actions">
+          <LiquidGlassButton href="/legal/personalizeaza-cookie-uri" variant="glass-primary">Personalizează preferințele</LiquidGlassButton>
+          <LiquidGlassButton href="/legal/politica-confidentialitate" variant="glass-secondary">Politica de confidențialitate</LiquidGlassButton>
+        </div>
+      </div>
+    </section>
+  </div>
+</LegalPageShell>

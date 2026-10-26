@@ -1,0 +1,22 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+  id: string;
+}
+
+const { question, answer, id } = Astro.props;
+---
+
+<details class="glass-card group" id={id}>
+  <summary class="font-semibold cursor-pointer list-none focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 rounded-md p-2 -m-2">
+    <span class="flex items-center justify-between">
+      {question}
+      <span class="text-2xl group-open:rotate-180 transition-transform duration-200" aria-hidden="true">▼</span>
+    </span>
+  </summary>
+  <div class="mt-4 text-black/70">
+    <p>{answer}</p>
+  </div>
+</details>
+

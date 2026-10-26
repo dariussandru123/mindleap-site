@@ -1,0 +1,158 @@
+---
+import { FAQ_ITEMS } from '@/lib/constants';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton.astro';
+---
+
+<section class="faq-section relative py-16 md:py-24 w-full text-white overflow-hidden" aria-label="Întrebări pe care le primim des de la antreprenori">
+  <div class="faq-glow pointer-events-none absolute top-[-80px] left-1/2 -translate-x-1/2 w-[420px] h-[220px] rounded-full" aria-hidden="true"></div>
+  <div
+    class="pointer-events-none absolute inset-0 opacity-[0.03]"
+    style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto mb-10 md:mb-12 text-center">
+      <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">
+        Înainte să ne scrii
+      </span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4 text-white leading-tight text-balance">
+        Întrebări pe care le primim des de la antreprenori
+      </h2>
+      <p class="text-base sm:text-lg text-white/70 leading-relaxed text-balance">
+        Întrebările pe care le primim des de la antreprenori înainte să ne scrie — răspunsuri directe, fără jargon.
+      </p>
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-3">
+      {FAQ_ITEMS.map((faq) => (
+        <details class="faq-item group">
+          <summary class="faq-question">
+            <span>{faq.question}</span>
+            <i class="ti ti-chevron-down faq-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="faq-answer-wrap">
+            <p class="faq-answer">{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <div class="max-w-3xl mx-auto mt-10 md:mt-12 text-center">
+      <p class="text-sm text-white/55 mb-5">
+        Ai o situație mai specifică? Prima discuție e gratuită.
+      </p>
+      <LiquidGlassButton href="/contact" variant="glass-primary">
+        Programează o discuție
+      </LiquidGlassButton>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": FAQ_ITEMS.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+})} />
+
+<style>
+  .faq-section {
+    background: radial-gradient(circle at 50% 0%, #16332b 0%, #0a0e1a 60%);
+  }
+
+  .faq-glow {
+    background: rgba(64, 255, 170, 0.1);
+    filter: blur(60px);
+  }
+
+  .faq-item {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 0.5px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    padding: 0 1.25rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  @media (min-width: 768px) {
+    .faq-item {
+      padding: 0 1.5rem;
+    }
+  }
+
+  .faq-item:hover {
+    border-color: rgba(64, 255, 170, 0.28);
+  }
+
+  .faq-item[open] {
+    border-color: rgba(64, 255, 170, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #f5f7fa;
+    cursor: pointer;
+    list-style: none;
+    line-height: 1.45;
+  }
+
+  @media (min-width: 768px) {
+    .faq-question {
+      font-size: 1rem;
+      padding: 1.25rem 0;
+    }
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-chevron {
+    font-size: 1.125rem;
+    color: #40ffaa;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer-wrap {
+    padding-bottom: 1.1rem;
+  }
+
+  @media (min-width: 768px) {
+    .faq-answer-wrap {
+      padding-bottom: 1.25rem;
+    }
+  }
+
+  .faq-answer {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  @media (min-width: 768px) {
+    .faq-answer {
+      font-size: 0.9375rem;
+    }
+  }
+</style>

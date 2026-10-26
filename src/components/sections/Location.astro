@@ -1,0 +1,88 @@
+---
+import { SITE } from '@/config/site';
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://mindleap.ro';
+---
+
+<section class="py-16 md:py-24 bg-white w-full" aria-label="Locație">
+  <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-balance">
+      Unde ne găsești?
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+      <div class="glass-card-light">
+        <h3 class="text-2xl font-semibold mb-4 text-black">Informații de contact</h3>
+        <address class="not-italic space-y-3 text-black/80">
+          {SITE.phone && (
+            <p>
+              <strong class="text-black">Telefon:</strong>{' '}
+              <a
+                href={`tel:${SITE.phone.replace(/\s/g, '')}`}
+                class="hover:underline focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 rounded-md"
+              >
+                {SITE.phone}
+              </a>
+            </p>
+          )}
+          {SITE.email && (
+            <p>
+              <strong class="text-black">Email:</strong>{' '}
+              <a
+                href={`mailto:${SITE.email}`}
+                class="hover:underline focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 rounded-md"
+              >
+                {SITE.email}
+              </a>
+            </p>
+          )}
+          <p>
+            <strong class="text-black">WhatsApp:</strong>{' '}
+            <a
+              href={`https://wa.me/${SITE.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:underline focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 rounded-md"
+            >
+              {SITE.whatsapp}
+            </a>
+          </p>
+        </address>
+      </div>
+      <div class="glass-card-light">
+        <h3 class="text-2xl font-semibold mb-4 text-black">Program</h3>
+        <p class="text-black/70">Luni - Vineri: 09:00 - 18:00</p>
+        <p class="text-black/70">Sâmbătă - Duminică: Închis</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": SITE.name,
+  "description": SITE.description,
+  "url": siteUrl,
+  "telephone": SITE.phone,
+  "email": SITE.email,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": SITE.address.street,
+    "addressLocality": SITE.address.city,
+    "addressRegion": SITE.address.county,
+    "postalCode": SITE.address.postalCode,
+    "addressCountry": "RO"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "areaServed": {
+    "@type": "Country",
+    "name": "Romania"
+  }
+})} />
+

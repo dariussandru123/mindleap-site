@@ -1,0 +1,63 @@
+---
+import LogoLoop from '@/components/interactive/LogoLoop';
+
+type LogoItem = {
+  src: string;
+  alt: string;
+  title: string;
+  maxHeight?: number;
+};
+
+const partners = [
+  { name: 'Atelierul de Tehnologie', logo: '/parteneri/logo-adt-banner-whitebg.webp' },
+  { name: 'Bubble Kids', logo: '/parteneri/logo-bubble-kids.webp' },
+  { name: 'Coldea', logo: '/parteneri/logo-coldea.webp' },
+  { name: 'FCS', logo: '/parteneri/logo-fcs.webp' },
+  { name: 'Melek', logo: '/parteneri/logo-melek.webp' },
+  { name: 'MIS', logo: '/parteneri/logo-mis.webp' },
+  { name: 'Odissea', logo: '/parteneri/logo-odissea.webp' },
+  { name: 'Pandoras', logo: '/parteneri/logo-pandoras.webp' },
+  { name: 'Pandoras Energy', logo: '/parteneri/logo-pandoras-energy.webp' },
+  { name: 'Perfect Doors', logo: '/parteneri/logo-perfect-doors.webp' },
+  { name: 'Primaria Sibiu', logo: '/parteneri/logo-primaria-sibiu.webp' },
+  { name: 'Stereographic', logo: '/parteneri/logo-stereographic.webp' }
+];
+
+const logos: LogoItem[] = partners.map((partner) => {
+  const item: LogoItem = {
+    src: partner.logo,
+    alt: `Logo ${partner.name}`,
+    title: partner.name,
+  };
+  if (partner.name === 'Odissea' || partner.name === 'Stereographic' || partner.name === 'Perfect Doors' || partner.name === 'Atelierul de Tehnologie') {
+    item.maxHeight = 50;
+  }
+  if (partner.name === 'Bubble Kids') {
+    item.maxHeight = 56;
+  }
+  return item;
+});
+---
+
+<section class="py-16 md:py-24 bg-white w-full" aria-label="Parteneri">
+  <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-balance">
+      Au avut încredere în noi
+    </h2>
+    <div class="overflow-hidden relative w-full h-24 md:h-28">
+      <LogoLoop
+        client:load
+        logos={logos}
+        speed={120}
+        direction="left"
+        logoHeight={70}
+        gap={48}
+        hoverSpeed={20}
+        scaleOnHover
+        fadeOut
+        fadeOutColor="#ffffff"
+        ariaLabel="Parteneri care au avut încredere în noi"
+      />
+    </div>
+  </div>
+</section>

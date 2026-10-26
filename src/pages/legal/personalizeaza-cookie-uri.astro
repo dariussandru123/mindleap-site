@@ -1,0 +1,40 @@
+---
+import LegalPageShell from '@/components/legal/LegalPageShell.astro';
+import CookiePreferencesManager from '@/components/interactive/CookiePreferencesManager';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton.astro';
+
+const breadcrumbs = [
+  { name: 'Acasă', href: '/' },
+  { name: 'Politica Cookies', href: '/legal/cookies' },
+  { name: 'Personalizează cookie-uri', href: '/legal/personalizeaza-cookie-uri' },
+];
+---
+
+<LegalPageShell
+  metaTitle="Personalizează preferințele cookie-uri - Mindleap"
+  metaDescription="Gestionează preferințele tale privind cookie-urile pe site-ul Mindleap."
+  breadcrumbs={breadcrumbs}
+  title="Personalizează cookie-uri"
+>
+  <div slot="intro" class="legal-card legal-intro">
+    <p>
+      Poți modifica în orice moment ce tipuri de cookie-uri acceptăm. Cookie-urile strict necesare rămân active pentru funcționarea site-ului. Pentru detalii, consultă <a href="/legal/cookies" class="legal-link">Politica Cookies</a>.
+    </p>
+  </div>
+
+  <div class="legal-content">
+    <section class="legal-section">
+      <CookiePreferencesManager client:load />
+    </section>
+
+    <section class="legal-section">
+      <div class="legal-card">
+        <p class="legal-muted">Documente legale conexe:</p>
+        <div class="legal-actions">
+          <LiquidGlassButton href="/legal/cookies" variant="glass-secondary">Politica Cookies</LiquidGlassButton>
+          <LiquidGlassButton href="/legal/politica-confidentialitate" variant="glass-secondary">Politica de confidențialitate</LiquidGlassButton>
+        </div>
+      </div>
+    </section>
+  </div>
+</LegalPageShell>

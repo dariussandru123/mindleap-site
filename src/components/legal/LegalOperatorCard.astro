@@ -1,0 +1,17 @@
+---
+import { SITE } from '@/config/site';
+import { CONTACT_EMAIL, getLegalFullAddress } from '@/config/legal';
+
+const { company } = SITE;
+const fullAddress = getLegalFullAddress();
+---
+
+<dl class="legal-dl">
+  <div><dt>Denumire</dt><dd>{company.legalName}</dd></div>
+  <div><dt>CUI</dt><dd>{company.cui}</dd></div>
+  <div><dt>Nr. Reg. Comerțului</dt><dd>{company.tradeRegister}</dd></div>
+  <div><dt>Sediu social</dt><dd>{fullAddress}</dd></div>
+  <div><dt>Website</dt><dd><a href={SITE.url} class="legal-link">{SITE.url.replace('https://', '')}</a></dd></div>
+  <div><dt>Email</dt><dd><a href={`mailto:${CONTACT_EMAIL}`} class="legal-link">{CONTACT_EMAIL}</a></dd></div>
+  <div><dt>Telefon</dt><dd><a href={`tel:${SITE.phone.replace(/\s/g, '')}`} class="legal-link">{SITE.phone}</a></dd></div>
+</dl>

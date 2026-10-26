@@ -1,0 +1,155 @@
+---
+import LegalOperatorCard from '@/components/legal/LegalOperatorCard.astro';
+import LegalPageShell from '@/components/legal/LegalPageShell.astro';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton.astro';
+import { SITE } from '@/config/site';
+import { CONTACT_EMAIL } from '@/config/legal';
+
+const breadcrumbs = [
+  { name: 'Acasă', href: '/' },
+  { name: 'Politică de confidențialitate', href: '/legal/politica-confidentialitate' },
+];
+
+const { company } = SITE;
+---
+
+<LegalPageShell
+  metaTitle="Politică de confidențialitate - Mindleap"
+  metaDescription="Politica de confidențialitate a MINDLEAP STRATEGIES SRL privind prelucrarea datelor personale conform GDPR."
+  breadcrumbs={breadcrumbs}
+  title="Politică de confidențialitate"
+>
+  <div slot="intro" class="legal-card legal-intro">
+    <p>
+      {company.legalName} respectă confidențialitatea datelor dvs. personale. Această politică explică ce date colectăm, de ce le prelucrăm, cât timp le păstrăm și ce drepturi aveți, în conformitate cu Regulamentul (UE) 2016/679 (GDPR) și Legea nr. 190/2018.
+    </p>
+  </div>
+
+  <div class="legal-content">
+    <section class="legal-section">
+      <h2>1. Operatorul de date</h2>
+      <LegalOperatorCard />
+    </section>
+
+    <section class="legal-section">
+      <h2>2. Categorii de date prelucrate</h2>
+      <div class="legal-prose">
+        <p>În funcție de interacțiunea dvs. cu noi, putem prelucra:</p>
+        <ul>
+          <li><strong>date de identificare și contact</strong> — nume, prenume, denumire firmă, funcție, email, telefon;</li>
+          <li><strong>date din comunicări</strong> — mesaje trimise prin formulare, email, WhatsApp sau alte canale;</li>
+          <li><strong>date contractuale și financiare</strong> — în relația de client (facturare, plăți), în măsura necesară;</li>
+          <li><strong>date tehnice</strong> — adresă IP, tip browser, sistem de operare, dispozitiv, pagini vizitate, sursă trafic;</li>
+          <li><strong>preferințe cookie-uri</strong> — alegerile dvs. privind cookie-urile și tehnologiile similare;</li>
+          <li><strong>date de marketing</strong> — interacțiuni cu campaniile noastre, dacă ați dat consimțământ sau dacă există temei legal B2B.</li>
+        </ul>
+        <p>Nu colectăm în mod intenționat date sensibile (categorii speciale GDPR art. 9), cu excepția cazurilor în care le furnizați voluntar și există un temei legal explicit.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>3. Scopuri și temeiuri legale</h2>
+      <div class="legal-card">
+        <div class="legal-prose">
+          <ol>
+            <li><strong>Răspuns la solicitări / ofertare</strong> — temei: executarea demersurilor precontractuale sau interes legitim (art. 6 alin. (1) lit. b/f GDPR).</li>
+            <li><strong>Prestarea serviciilor contractate</strong> — temei: executarea contractului (art. 6 alin. (1) lit. b).</li>
+            <li><strong>Contabilitate, fiscalitate, arhivare</strong> — temei: obligație legală (art. 6 alin. (1) lit. c).</li>
+            <li><strong>Securitate IT și prevenirea abuzurilor</strong> — temei: interes legitim (art. 6 alin. (1) lit. f).</li>
+            <li><strong>Analiză trafic website (cookie-uri analitice)</strong> — temei: consimțământ (art. 6 alin. (1) lit. a), dacă nu sunt strict necesare.</li>
+            <li><strong>Marketing și remarketing</strong> — temei: consimțământ (art. 6 alin. (1) lit. a) sau interes legitim B2B, în limitele legii.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>4. Destinatari și împuterniciți</h2>
+      <div class="legal-prose">
+        <p>Datele pot fi accesate de personalul autorizat Mindleap și transmise către furnizori (împuterniciți), precum:</p>
+        <ul>
+          <li>hosting și infrastructură cloud;</li>
+          <li>servicii email și formulare;</li>
+          <li>analytics (ex. Google Analytics, dacă este activat cu consimțământ);</li>
+          <li>CRM, facturare, contabilitate;</li>
+          <li>consultanți juridici / fiscali, la nevoie.</li>
+        </ul>
+        <p>Încheiem acorduri de prelucrare (DPA) acolo unde este necesar. Transferurile în afara SEE se realizează cu garanții adecvate (ex. Clauze Contractuale Standard UE), dacă este cazul.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>5. Durata stocării</h2>
+      <div class="legal-prose">
+        <p>Păstrăm datele doar cât este necesar pentru scopurile indicate:</p>
+        <ul>
+          <li>solicitări neconvertite în contract: de regulă până la 24 luni;</li>
+          <li>relație contractuală: durata contractului + perioadele legale de arhivare (de ex. 10 ani documente contabile);</li>
+          <li>cookie-uri: conform duratelor din <a href="/legal/cookies" class="legal-link">Politica Cookies</a>;</li>
+          <li>loguri de securitate: perioadă rezonabilă, de regulă până la 12 luni.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>6. Drepturile persoanelor vizate</h2>
+      <div class="legal-prose">
+        <p>Conform GDPR, aveți dreptul la:</p>
+        <ul>
+          <li>acces la date și informații privind prelucrarea;</li>
+          <li>rectificare a datelor inexacte;</li>
+          <li>ștergerea datelor („dreptul de a fi uitat”), în condițiile legii;</li>
+          <li>restricționarea prelucrării;</li>
+          <li>portabilitatea datelor, unde este aplicabil;</li>
+          <li>opoziție la prelucrare bazată pe interes legitim;</li>
+          <li>retragerea consimțământului, fără a afecta legalitatea prelucrării anterioare;</li>
+          <li>depunerea unei plângeri la ANSPDCP — <a href="https://www.dataprotection.ro" class="legal-link" target="_blank" rel="noopener noreferrer">www.dataprotection.ro</a>.</li>
+        </ul>
+        <p>Pentru exercitarea drepturilor, scrieți-ne la <a href={`mailto:${CONTACT_EMAIL}`} class="legal-link">{CONTACT_EMAIL}</a>. Răspundem în termen de 30 de zile, cu posibilitate de prelungire justificată conform art. 12 GDPR.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>7. Securitatea datelor</h2>
+      <div class="legal-card legal-warning">
+        <div class="legal-prose">
+          <p>Aplicăm măsuri tehnice și organizatorice rezonabile: HTTPS, control acces, parole, backup, furnizori verificați. <strong>Nu putem garanta securitate absolută</strong> a mediilor online.</p>
+          <p>În cazul unui incident de securitate cu risc pentru drepturile dvs., vom notifica ANSPDCP în 72 de ore și, dacă este necesar, persoanele vizate, conform art. 33–34 GDPR. Pentru detalii despre limitarea răspunderii în caz de atacuri cibernetice externe, consultați <a href="/legal/termeni-si-conditii" class="legal-link">Termenii și condițiile</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>8. Cookie-uri</h2>
+      <div class="legal-prose">
+        <p>Utilizăm cookie-uri conform Directivei ePrivacy și GDPR. Detalii: <a href="/legal/cookies" class="legal-link">Politica Cookies</a>. Puteți modifica preferințele în <a href="/legal/personalizeaza-cookie-uri" class="legal-link">Personalizează cookie-uri</a>.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>9. Minori</h2>
+      <div class="legal-prose">
+        <p>Website-ul și serviciile noastre nu sunt destinate persoanelor sub 16 ani. Nu colectăm în mod conștient date de la minori. Dacă aflați că un minor ne-a furnizat date, contactați-ne pentru ștergere.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>10. Modificări</h2>
+      <div class="legal-prose">
+        <p>Putem actualiza această politică. Versiunea curentă este publicată pe această pagină, cu data actualizării. Vă recomandăm verificarea periodică.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>11. Contact DPO / confidențialitate</h2>
+      <div class="legal-card">
+        <p class="legal-muted">Pentru orice întrebare privind protecția datelor:</p>
+        <p class="legal-muted"><strong>Email:</strong> <a href={`mailto:${CONTACT_EMAIL}`} class="legal-link">{CONTACT_EMAIL}</a></p>
+        <div class="legal-actions">
+          <LiquidGlassButton href="/contact" variant="glass-primary">Contactează-ne</LiquidGlassButton>
+          <LiquidGlassButton href="/legal/termeni-si-conditii" variant="glass-secondary">Termeni și condiții</LiquidGlassButton>
+        </div>
+      </div>
+    </section>
+  </div>
+</LegalPageShell>

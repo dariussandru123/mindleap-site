@@ -1,0 +1,50 @@
+{
+  "name": "mindleap",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "start": "node scripts/dev.js",
+    "stop": "node scripts/stop-dev.js",
+    "postinstall": "node scripts/ensure-deps.js",
+    "repair": "node scripts/repair.js",
+    "validate": "node scripts/validate-dev.js",
+    "prebuild": "node scripts/ensure-deps.js && node scripts/convert-partners.js && node scripts/generate-og-image.js && node scripts/generate-sitemap.js",
+    "build": "astro build && node scripts/build-checks.js",
+    "preview": "astro preview",
+    "astro": "astro",
+    "convert:partners": "node scripts/convert-partners.js",
+    "verify:performance": "node scripts/verify-performance.js",
+    "verify:cwv": "node scripts/audit-core-web-vitals.js",
+    "verify:search": "node scripts/audit-search-performance.js",
+    "verify:seo": "node scripts/verify-seo.js",
+    "verify:best-practices": "node scripts/verify-best-practices.js",
+    "verify:sitemap": "node scripts/verify-sitemap.js",
+    "verify:all": "npm run verify:performance && npm run verify:seo && npm run verify:best-practices && npm run verify:sitemap",
+    "check": "node scripts/build-checks.js"
+  },
+  "dependencies": {
+    "@astrojs/react": "^3.6.1",
+    "@astrojs/tailwind": "^5.1.3",
+    "@astrojs/vercel": "^7.8.2",
+    "@emailjs/nodejs": "^5.0.2",
+    "@supabase/supabase-js": "^2.110.1",
+    "@tabler/icons-webfont": "^2.47.0",
+    "astro": "^4.16.19",
+    "motion": "^12.23.26",
+    "ogl": "^0.0.88",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.13.0",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^3.4.10",
+    "terser": "^5.44.1",
+    "typescript": "^5.6.2"
+  }
+}

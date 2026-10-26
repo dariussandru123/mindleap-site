@@ -1,0 +1,234 @@
+---
+import { SITE } from '@/config/site';
+import { CANONICAL_ORIGIN, getCanonicalUrl } from '@/config/canonical';
+import { getPageTitle, getPageDescription, getOpenGraphTags, getTwitterCardTags, getSameAsUrls } from '@/config/seo';
+import { getGTMScript, getGTMNoScript } from '@/config/gtm';
+import Navbar from '@/components/layout/Navbar.astro';
+import Footer from '@/components/layout/Footer.astro';
+import SplashCursor from '@/components/interactive/SplashCursor';
+import WhatsAppButton from '@/components/interactive/WhatsAppButton.astro';
+import CookieConsent from '@/components/interactive/CookieConsent';
+import CookieSettingsButton from '@/components/interactive/CookieSettingsButton';
+import '@tabler/icons-webfont/tabler-icons.min.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
+  breadcrumbs?: Array<{ name: string; href: string }>;
+  noindex?: boolean;
+}
+
+const {
+  title = SITE.title,
+  description = SITE.description,
+  image,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  breadcrumbs = [],
+  noindex = false,
+} = Astro.props;
+
+const pageTitle = getPageTitle(title);
+const pageDescription = getPageDescription(description);
+const ogTags = getOpenGraphTags(Astro, pageTitle, pageDescription, image, {
+  type,
+  publishedTime,
+  modifiedTime,
+});
+const twitterTags = getTwitterCardTags(pageTitle, pageDescription, image);
+const siteUrl = CANONICAL_ORIGIN;
+const canonicalUrl = getCanonicalUrl(Astro.url.pathname);
+const sameAs = getSameAsUrls();
+const organizationEmail = SITE.email || 'hello@mindleap.ro';
+---
+
+<!doctype html>
+<html lang="ro" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={pageDescription} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="ro" href={canonicalUrl} />
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM context" />
+    <link rel="alternate" type="text/plain" href="/ai.txt" title="AI crawler instructions" />
+
+    <!-- Open Graph / Facebook -->
+    {Object.entries(ogTags).map(([key, value]) => (
+      <meta property={key} content={value} />
+    ))}
+
+    <!-- Twitter -->
+    {Object.entries(twitterTags).map(([key, value]) => (
+      <meta name={key} content={value} />
+    ))}
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fonts (non-blocking vs CSS @import — better LCP) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+    </noscript>
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+    <!-- Website Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": SITE.name,
+      "url": siteUrl,
+      "description": SITE.description,
+      "inLanguage": "ro-RO",
+      "publisher": {
+        "@type": "Organization",
+        "name": SITE.name,
+        "url": siteUrl
+      }
+    })} />
+
+    <!-- Breadcrumb Schema -->
+    {breadcrumbs.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": breadcrumbs.map((item, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": item.name,
+          "item": new URL(item.href, siteUrl).href
+        }))
+      })} />
+    )}
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "MarketingAgency",
+      "name": SITE.name,
+      "legalName": SITE.company.legalName,
+      "taxID": SITE.company.cui,
+      "description": SITE.description,
+      "url": siteUrl,
+      "logo": `${siteUrl}/mindleap-logo-banner.svg`,
+      "image": `${siteUrl}${SITE.ogImage}`,
+      "email": organizationEmail,
+      "telephone": SITE.phone,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": SITE.address.street,
+        "addressLocality": SITE.address.city,
+        "postalCode": SITE.address.postalCode,
+        "addressRegion": SITE.address.county,
+        "addressCountry": "RO"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": SITE.phone,
+        "email": organizationEmail,
+        "contactType": "customer service",
+        "areaServed": "RO",
+        "availableLanguage": ["Romanian", "English"]
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Romania"
+      },
+      "sameAs": sameAs
+    })} />
+
+    <!-- Google Tag Manager -->
+    {getGTMScript() && <Fragment set:html={getGTMScript()} />}
+    
+    <!-- Cookie Consent Initialization -->
+    <script is:inline>
+      // Initialize cookie consent on page load
+      (function() {
+        if (typeof window !== 'undefined') {
+          // Initialize dataLayer if it doesn't exist
+          window.dataLayer = window.dataLayer || [];
+          
+          // Load consent preferences
+          try {
+            const stored = localStorage.getItem('mindleap_cookie_consent');
+            if (stored) {
+              const consent = JSON.parse(stored);
+              if (consent.preferences) {
+                // Push consent state to GTM immediately
+                window.dataLayer.push({
+                  event: 'cookie_consent_update',
+                  cookie_consent: {
+                    necessary: consent.preferences.necessary || true,
+                    performance: consent.preferences.performance || false,
+                    marketing: consent.preferences.marketing || false,
+                    functional: consent.preferences.functional || false,
+                  },
+                });
+                
+                // Push individual category events
+                if (consent.preferences.performance) {
+                  window.dataLayer.push({ event: 'cookie_consent_performance' });
+                }
+                if (consent.preferences.marketing) {
+                  window.dataLayer.push({ event: 'cookie_consent_marketing' });
+                }
+                if (consent.preferences.functional) {
+                  window.dataLayer.push({ event: 'cookie_consent_functional' });
+                }
+              }
+            }
+          } catch (e) {
+            console.error('Error loading cookie consent:', e);
+          }
+          
+          // Mark consent system as initialized
+          window.dataLayer.push({
+            event: 'cookie_consent_initialized',
+          });
+        }
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col bg-black w-full overflow-x-hidden">
+    {getGTMNoScript() && <Fragment set:html={getGTMNoScript()} />}
+    
+    <Navbar />
+    
+    <main id="main-content" class="flex-grow w-full overflow-x-hidden">
+      <slot />
+    </main>
+    
+    <Footer />
+    
+    <SplashCursor client:idle />
+    <WhatsAppButton />
+    <CookieSettingsButton client:idle />
+    <CookieConsent client:idle />
+
+    <style is:global>
+      html {
+        font-family: 'Inter', system-ui, sans-serif;
+      }
+    </style>
+  </body>
+</html>
+

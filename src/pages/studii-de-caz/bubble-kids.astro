@@ -1,0 +1,349 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SpotlightCard from '@/components/ui/SpotlightCard';
+import AnimatedNumberCard from '@/components/ui/AnimatedNumberCard';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton.astro';
+import { TESTIMONIALS } from '@/lib/constants';
+import '@/styles/global.css';
+
+const breadcrumbs = [
+  { name: 'Acasă', href: '/' },
+  { name: 'Studii de caz', href: '/studii-de-caz' },
+  { name: 'Bubble Kids', href: '/studii-de-caz/bubble-kids' },
+];
+
+const testimonial = TESTIMONIALS.find((t) => t.author === 'Daniela Răduț');
+
+const deliverables = [
+  {
+    icon: 'ti-palette',
+    title: 'Grafică & identitate vizuală',
+    text: 'Materiale pentru online și offline — de la postări și ads la tot ce trebuie ca brandul să arate coerent de la prima impresie.',
+  },
+  {
+    icon: 'ti-speakerphone',
+    title: 'Advertising',
+    text: 'Campanii plătite orientate spre rezervări, nu doar reach — mesaje clare pentru părinți din Sibiu și împrejurimi.',
+  },
+  {
+    icon: 'ti-map-pin',
+    title: 'Google Business Profile',
+    text: 'Prezență locală configurată corect: profil complet, vizibilitate în căutări locale și punct de contact direct pentru rezervări.',
+  },
+  {
+    icon: 'ti-video',
+    title: 'Reels & conținut video',
+    text: 'Scurt-form video care arată energia evenimentelor — conținut care convinge înainte ca părintele să trimită primul mesaj.',
+  },
+  {
+    icon: 'ti-route',
+    title: 'Structură customer experience',
+    text: 'Flux clar de la descoperire la rezervare: ce vede clientul, în ce ordine, ce întrebări îi răspundem înainte să ceară ofertă.',
+  },
+  {
+    icon: 'ti-confetti',
+    title: 'Eveniment de lansare',
+    text: 'Coordonare lansare din martie 2026 — moment public care a ancorat brandul în piață și a generat primele conversații și rezervări.',
+  },
+];
+
+const outcomes = [
+  'Calendar de la zero la peste 15 evenimente rezervate în prima lună',
+  'Apariții în presă locală — vizibilitate dincolo de social media',
+  'Brand lansat coerent: grafică, ads, GBP și conținut video aliniate',
+  'Customer experience structurat — părintele știe exact ce rezervă și cum',
+];
+---
+
+<BaseLayout
+  title="Studiu de caz: Bubble Kids - Mindleap"
+  description="Lansare Bubble Kids martie 2026: de la zero rezervări la peste 15 evenimente într-o lună. Grafică, ads, Google Business Profile, reels și eveniment de lansare."
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero -->
+  <section class="case-hero relative w-full pt-20 pb-10 md:pt-32 md:pb-20 text-white overflow-hidden">
+    <div class="case-hero-glow pointer-events-none absolute top-[-60px] left-1/2 -translate-x-1/2 w-[360px] h-[200px] rounded-full" aria-hidden="true"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="mb-8 flex justify-center">
+        <div class="case-logo-light">
+          <img
+            src="/parteneri/logo-bubble-kids.webp"
+            alt="Bubble Kids"
+            class="h-24 sm:h-28 md:h-32 w-auto max-w-[min(100%,320px)] object-contain"
+            width="320"
+            height="128"
+            loading="eager"
+          />
+        </div>
+      </div>
+      <div class="mb-4">
+        <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">
+          Studiu de caz · Lansare martie 2026
+        </span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-5 text-balance leading-tight">
+        De la 0 la peste 15 evenimente<br class="hidden sm:block" /> în prima lună
+      </h1>
+      <p class="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl mx-auto text-balance leading-relaxed">
+        Am coordonat lansarea Bubble Kids — grafică, ads, reels, Google Business Profile, customer experience și eveniment de lansare.
+      </p>
+    </div>
+  </section>
+
+  <!-- Context -->
+  <section class="case-section relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute top-0 left-0 w-full md:w-1/2 h-full" style="background: radial-gradient(circle at 30% 40%, rgba(64,255,170,0.10), transparent 50%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+          <div>
+            <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">Punctul de plecare</span>
+            <h2 class="text-3xl sm:text-4xl font-bold mt-3 mb-4 text-white leading-tight">
+              Lansare de la zero
+            </h2>
+            <p class="text-base sm:text-lg text-white/75 leading-relaxed mb-4">
+              Bubble Kids pornea în martie 2026 fără istoric de rezervări, fără recenzii și fără un sistem clar prin care părinții să înțeleagă rapid ce primesc la un eveniment.
+            </p>
+            <p class="text-base sm:text-lg text-white/75 leading-relaxed">
+              Job-ul nu era „să aibă Instagram", ci <span class="text-primary-mint font-medium">să umple calendarul</span> — cu părinți care înțeleg oferta, au încredere în brand și rezervă din prima lună de la lansare.
+            </p>
+          </div>
+          <div class="glass-card-dark p-6 md:p-8">
+            <p class="text-sm font-semibold text-primary-mint uppercase tracking-wider mb-3">Ce am coordonat</p>
+            <ul class="space-y-2.5 text-sm md:text-base text-white/75 leading-relaxed">
+              <li class="flex items-start gap-2"><i class="ti ti-check text-primary-mint mt-0.5" aria-hidden="true"></i><span>Identitate vizuală și grafică pentru toate canalele</span></li>
+              <li class="flex items-start gap-2"><i class="ti ti-check text-primary-mint mt-0.5" aria-hidden="true"></i><span>Campanii ads orientate spre rezervări</span></li>
+              <li class="flex items-start gap-2"><i class="ti ti-check text-primary-mint mt-0.5" aria-hidden="true"></i><span>Google Business Profile & prezență locală</span></li>
+              <li class="flex items-start gap-2"><i class="ti ti-check text-primary-mint mt-0.5" aria-hidden="true"></i><span>Reels și conținut video short-form</span></li>
+              <li class="flex items-start gap-2"><i class="ti ti-check text-primary-mint mt-0.5" aria-hidden="true"></i><span>Structură customer experience end-to-end</span></li>
+              <li class="flex items-start gap-2"><i class="ti ti-check text-primary-mint mt-0.5" aria-hidden="true"></i><span>Eveniment de lansare — martie 2026</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rezultate -->
+  <section class="case-section case-section-alt relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(64,255,170,0.08), transparent 70%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto mb-8 md:mb-10 text-center">
+        <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">Rezultate · prima lună</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4 text-white leading-tight">
+          Ce s-a întâmplat după lansare
+        </h2>
+        <p class="text-base sm:text-lg text-white/65">
+          Martie 2026 — de la zero rezervări la un business cu calendar activ și vizibilitate în presă.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-6 mb-8">
+        <AnimatedNumberCard
+          client:only="react"
+          title="Evenimente rezervate"
+          initialValue={0}
+          value={15}
+          suffix="+"
+          color="rgba(64, 255, 170, 1)"
+          delay={0}
+        />
+        <div class="case-stat-card">
+          <h4 class="case-stat-label">Apariții în presă</h4>
+          <p class="case-stat-value">Da</p>
+          <p class="case-stat-note">Vizibilitate locală dincolo de social</p>
+        </div>
+        <AnimatedNumberCard
+          client:only="react"
+          title="Luni de la lansare"
+          value={1}
+          suffix=""
+          color="rgba(64, 255, 170, 0.7)"
+          delay={240}
+        />
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <SpotlightCard client:visible spotlightColor="rgba(64, 255, 170, 0.2)" className="!p-5 md:!p-6 rounded-xl text-center">
+          <p class="text-base sm:text-lg text-white/75 leading-relaxed">
+            În prima lună de la lansare, Bubble Kids a trecut de la <strong class="text-white font-semibold">zero rezervări</strong> la <strong class="text-white font-semibold">peste 15 evenimente confirmate</strong>, cu apariții în presa locală care au consolidat încrederea în brand — nu doar reach pe social media.
+          </p>
+        </SpotlightCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- Livrabile -->
+  <section class="case-section relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute top-0 right-0 w-full md:w-1/2 h-full" style="background: radial-gradient(circle at 70% 30%, rgba(64,255,170,0.08), transparent 55%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto mb-8 md:mb-10 text-center">
+        <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">Livrabile</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 text-white leading-tight">
+          Ce am construit pentru lansare
+        </h2>
+      </div>
+
+      <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+        {deliverables.map((item) => (
+          <div class="glass-card-dark p-5 md:p-6">
+            <div
+              class="w-9 h-9 rounded-xl flex items-center justify-center mb-3"
+              style="background: linear-gradient(135deg, rgba(64,255,170,0.18), rgba(255,255,255,0.04)); border: 0.5px solid rgba(64,255,170,0.35);"
+            >
+              <i class={`ti ${item.icon} text-primary-mint text-lg`} aria-hidden="true"></i>
+            </div>
+            <h3 class="text-base md:text-lg font-bold text-white mb-2">{item.title}</h3>
+            <p class="text-sm text-white/65 leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact -->
+  <section class="case-section case-section-alt relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div>
+            <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">Impact</span>
+            <h2 class="text-3xl sm:text-4xl font-bold mt-3 mb-4 text-white leading-tight">
+              Mai mult decât postări
+            </h2>
+            <p class="text-base sm:text-lg text-white/70 leading-relaxed">
+              Lansarea nu a fost un singur canal — a fost un sistem: vizual, local, plătit, video și experiență de la primul contact până la rezervare. Rezultatul s-a văzut în calendar, nu doar în analytics.
+            </p>
+          </div>
+          <SpotlightCard client:visible spotlightColor="rgba(64, 255, 170, 0.2)" className="!p-5 md:!p-6 rounded-xl">
+            <ul class="space-y-3">
+              {outcomes.map((item) => (
+                <li class="flex items-start gap-3 text-sm md:text-base text-white/75 leading-relaxed">
+                  <i class="ti ti-check text-primary-mint mt-0.5 flex-shrink-0" aria-hidden="true"></i>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </SpotlightCard>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  {testimonial && (
+    <section class="case-section relative py-16 md:py-24 w-full text-white overflow-hidden">
+      <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(64,255,170,0.08), transparent 70%);"></div>
+      <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <SpotlightCard client:visible spotlightColor="rgba(64, 255, 170, 0.2)" className="!p-5 md:!p-6 rounded-xl">
+            <blockquote class="mb-5">
+              <p class="text-base sm:text-lg text-white/80 leading-relaxed italic">
+                "{testimonial.content}"
+              </p>
+            </blockquote>
+            <div class="flex items-center justify-between gap-4 pt-4 border-t border-white/10">
+              <div>
+                <cite class="not-italic font-semibold text-white text-lg block">{testimonial.author}</cite>
+                <p class="text-white/60 text-sm mt-1">{testimonial.role}, {testimonial.company}</p>
+              </div>
+              <div class="flex text-yellow-400 text-lg flex-shrink-0" aria-label={`${testimonial.rating} din 5 stele`}>
+                {Array.from({ length: testimonial.rating }).map(() => (
+                  <span aria-hidden="true">★</span>
+                ))}
+              </div>
+            </div>
+          </SpotlightCard>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="case-cta relative py-16 md:py-24 text-white w-full overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(64,255,170,0.08), transparent 70%);"></div>
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-balance">
+        Pregătești o lansare?
+      </h2>
+      <p class="text-base sm:text-lg md:text-xl text-white/70 mb-8 md:mb-10 max-w-2xl mx-auto text-balance">
+        Coordonez tot ce trebuie ca brandul să iasă pe piață cu direcție clară — și cu rezervări, nu doar cu like-uri.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3.5 justify-center items-center flex-wrap">
+        <LiquidGlassButton href="/contact" variant="glass-primary">Contactează-ne</LiquidGlassButton>
+        <LiquidGlassButton href="/studii-de-caz" variant="glass-secondary">Alte studii de caz</LiquidGlassButton>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .case-hero,
+  .case-section {
+    background: radial-gradient(circle at 50% 0%, #16332b 0%, #0a0e1a 60%);
+  }
+  .case-section-alt {
+    background: radial-gradient(circle at 70% 50%, #16332b 0%, #0a0e1a 60%);
+  }
+  .case-cta {
+    background: radial-gradient(circle at 50% 100%, #16332b 0%, #0a0e1a 60%);
+  }
+  .case-hero-glow {
+    background: rgba(64, 255, 170, 0.12);
+    filter: blur(60px);
+  }
+  .case-logo-light {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 1.25rem 1.75rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .case-stat-card {
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .case-stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+  }
+
+  .case-stat-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #40ffaa;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .case-stat-value {
+      font-size: 2.75rem;
+    }
+  }
+
+  .case-stat-note {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.55);
+  }
+</style>

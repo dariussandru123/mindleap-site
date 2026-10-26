@@ -1,0 +1,11 @@
+# Canonical host: https://mindleap.ro (non-www, HTTPS)
+
+# www -> apex
+https://www.mindleap.ro/* https://mindleap.ro/:splat 301!
+http://www.mindleap.ro/* https://mindleap.ro/:splat 301!
+
+# http -> https (apex)
+http://mindleap.ro/* https://mindleap.ro/:splat 301!
+
+# LLM compatibility alias
+/llm.txt /llms.txt 301

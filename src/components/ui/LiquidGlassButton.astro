@@ -1,0 +1,28 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'outline' | 'dark' | 'glass-primary' | 'glass-secondary';
+  class?: string;
+  target?: string;
+  rel?: string;
+  type?: 'button' | 'submit' | 'reset';
+  size?: 'default' | 'sm';
+}
+
+const { href, variant = 'glass-primary', class: className = '', target, rel, type, size = 'default' } = Astro.props;
+
+const isPrimary = variant === 'glass-primary' || variant === 'primary' || variant === 'dark';
+const glassClass = isPrimary ? 'btn-primary' : 'btn-secondary';
+const glassSizeClass = size === 'sm' ? 'btn-sm' : '';
+const glassClasses = [glassClass, glassSizeClass, className].filter(Boolean).join(' ');
+---
+
+{href ? (
+  <a href={href} target={target} rel={rel} class={glassClasses}>
+    <slot />
+  </a>
+) : (
+  <button class={glassClasses} type={type || 'button'}>
+    <slot />
+  </button>
+)}

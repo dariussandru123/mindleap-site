@@ -1,0 +1,136 @@
+---
+import LightRays from '@/components/interactive/LightRays';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton.astro';
+---
+
+<section class="relative w-full h-screen overflow-hidden bg-black text-white">
+  <!-- LightRays Background -->
+  <div class="absolute inset-0 z-[1] w-full h-full overflow-hidden">
+    <LightRays
+      client:load
+      raysOrigin="top-center"
+      raysColor="#40ffaa"
+      raysSpeed={0.9}
+      lightSpread={0.4}
+      rayLength={8}
+      pulsating={true}
+      fadeDistance={4}
+      saturation={1.3}
+      followMouse={true}
+      mouseInfluence={0.6}
+      noiseAmount={0}
+      distortion={0}
+      className="absolute inset-0 w-full h-full"
+    />
+  </div>
+
+  <!-- Content Overlay -->
+  <div class="relative z-[2] h-full flex items-center justify-center pt-16 md:pt-28">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+      <h1 class="text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center mb-4 md:mb-8">
+        <span class="text-primary-mint">Growth marketing</span><span class="text-[#f5f7fa]"> pentru IMM-uri</span>
+      </h1>
+
+      <p class="text-base sm:text-xl md:text-2xl mb-6 md:mb-10 text-white/90 max-w-3xl mx-auto text-balance drop-shadow-lg">
+        Ecosisteme de marketing și vânzări pentru antreprenorii care vor creștere pe termen lung.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-3.5 justify-center items-center flex-wrap w-full">
+        <LiquidGlassButton href="https://tally.so/r/EkW0bN" target="_blank" rel="noopener noreferrer" variant="glass-primary">
+          Începe aici
+          <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14"></path>
+            <path d="m13 6 6 6-6 6"></path>
+          </svg>
+        </LiquidGlassButton>
+        <LiquidGlassButton href="/servicii" variant="glass-secondary">
+          Vezi serviciile
+        </LiquidGlassButton>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <a href="#usp" class="hero-scroll-indicator" aria-label="Derulează la secțiunea următoare">
+    <span class="hero-scroll-label">Scroll</span>
+    <span class="hero-scroll-track" aria-hidden="true">
+      <span class="hero-scroll-dot"></span>
+    </span>
+  </a>
+</section>
+
+<style>
+  .hero-scroll-indicator {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .hero-scroll-indicator:hover,
+  .hero-scroll-indicator:focus-visible {
+    color: rgba(255, 255, 255, 0.75);
+    outline: none;
+  }
+
+  .hero-scroll-indicator:focus-visible .hero-scroll-track {
+    border-color: rgba(64, 255, 170, 0.5);
+  }
+
+  .hero-scroll-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll-track {
+    width: 20px;
+    height: 36px;
+    border-radius: 999px;
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    padding-top: 6px;
+  }
+
+  .hero-scroll-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #40ffaa;
+    animation: hero-scroll-dot 1.8s ease-in-out infinite;
+  }
+
+  @keyframes hero-scroll-dot {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    55% {
+      opacity: 0.35;
+      transform: translateY(14px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-scroll-dot {
+      animation: none;
+      opacity: 0.8;
+    }
+  }
+</style>

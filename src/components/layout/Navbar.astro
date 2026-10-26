@@ -1,0 +1,586 @@
+---
+import { NAVIGATION, SITE, MAIN_SERVICES } from '@/config/site';
+import SkipLink from './SkipLink.astro';
+
+const currentPath = Astro.url.pathname;
+---
+
+<SkipLink />
+<div class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl px-2 md:px-4 sm:px-6 overflow-visible">
+<nav
+  class="w-full apple-liquid-glass-navbar"
+  aria-label="Navigare principală"
+>
+  <div class="flex items-center justify-between h-12 md:h-16 px-2 md:px-4 lg:px-6">
+    <!-- Logo - Left -->
+    <a
+      href="/"
+      class="flex items-center space-x-1 md:space-x-2 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded-md transition-opacity flex-shrink-0"
+      aria-label="Mindleap - Pagina principală"
+    >
+      <img
+        src="/mindleap-logo-banner.svg"
+        alt="Mindleap Logo"
+        class="h-6 md:h-8 w-auto brightness-0 invert"
+        width="120"
+        height="24"
+        fetchpriority="high"
+      />
+    </a>
+
+    <!-- Desktop Navigation - Right -->
+    <div class="hidden lg:flex items-center space-x-0.5 whitespace-nowrap ml-auto overflow-visible">
+      {NAVIGATION.map((item) => {
+        const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+        const isServices = item.href === '/servicii';
+        
+        if (isServices) {
+          return (
+            <div class="relative group z-50 overflow-visible" id="services-dropdown">
+              <a
+                href="/servicii"
+                class={`relative px-2.5 py-2 text-xs font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black flex items-center gap-1 overflow-visible ${
+                  isActive
+                    ? 'text-white bg-white/10'
+                    : 'text-white/70 hover:text-[#40ffaa]'
+                }`}
+                id="services-dropdown-button"
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {item.name}
+                <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
+
+              <!-- Dropdown Menu -->
+              <div
+                class="services-dropdown-menu absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 rounded-2xl"
+                style="position: absolute !important; z-index: 1000 !important;"
+                id="services-dropdown-menu"
+              >
+                <div class="p-2">
+                  <a
+                    href="/servicii"
+                    class="block px-4 py-2.5 text-sm font-semibold text-[#40ffaa] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 relative z-10 border-b border-white/10 mb-1"
+                  >
+                    Toate serviciile
+                  </a>
+                  {MAIN_SERVICES.map((service) => (
+                    <a
+                      href={service.href}
+                      class="block px-4 py-2.5 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 relative z-10"
+                    >
+                      {service.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        }
+        
+        return (
+          <a
+            href={item.href}
+            class={`relative px-2.5 py-2 text-xs font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black overflow-visible ${
+              isActive
+                ? 'text-white bg-white/10'
+                : 'text-white/70 hover:text-[#40ffaa]'
+            }`}
+          >
+            {item.name}
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-button"
+      class="lg:hidden p-2 rounded-lg text-white/80 hover:text-[#40ffaa] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black flex-shrink-0 mobile-nav-button"
+      aria-label="Deschide meniul mobil"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg
+        id="mobile-menu-icon"
+        class="h-5 w-5 transition-transform duration-300"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+    </button>
+  </div>
+</nav>
+
+  <!-- Mobile Menu - Outside nav to avoid border-radius clipping -->
+  <div
+    id="mobile-menu"
+    class="hidden lg:hidden mt-2 rounded-2xl overflow-hidden apple-liquid-glass-mobile-menu"
+    role="menu"
+    aria-labelledby="mobile-menu-button"
+  >
+    <div class="px-4 py-4 space-y-1">
+      {NAVIGATION.map((item, index) => {
+        const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+        const isServices = item.href === '/servicii';
+        
+        if (isServices) {
+          return (
+            <div class="space-y-1">
+              <div class="flex items-center rounded-lg overflow-hidden mobile-nav-link" style={`animation-delay: ${index * 50}ms;`}>
+                <a
+                  href="/servicii"
+                  class={`flex-1 px-4 py-3 text-base font-medium focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black ${
+                    isActive
+                      ? 'text-white bg-white/10'
+                      : 'text-white/70 hover:text-[#40ffaa]'
+                  }`}
+                >
+                  {item.name}
+                </a>
+                <button
+                  type="button"
+                  class={`px-3 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black ${
+                    isActive ? 'text-white' : 'text-white/70 hover:text-[#40ffaa]'
+                  }`}
+                  aria-label="Arată subcategorii servicii"
+                  onclick="this.parentElement.nextElementSibling?.classList.toggle('hidden'); this.querySelector('svg')?.classList.toggle('rotate-180');"
+                >
+                  <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
+              <div class="hidden pl-4 space-y-1 border-l border-white/10 mt-1">
+                <a
+                  href="/servicii"
+                  class="block px-4 py-2 text-sm font-semibold text-[#40ffaa] hover:text-white rounded-lg mobile-nav-link"
+                >
+                  Toate serviciile
+                </a>
+                {MAIN_SERVICES.map((service) => (
+                  <a
+                    href={service.href}
+                    class="block px-4 py-2 text-sm text-white/60 hover:text-[#40ffaa] rounded-lg mobile-nav-link"
+                  >
+                    {service.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          );
+        }
+        
+        return (
+          <a
+            href={item.href}
+            role="menuitem"
+            class={`block px-4 py-3 rounded-lg text-base font-medium focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black mobile-nav-link ${
+              isActive
+                ? 'text-white bg-white/10'
+                : 'text-white/70 hover:text-[#40ffaa]'
+            }`}
+            style={`animation-delay: ${index * 50}ms;`}
+          >
+            {item.name}
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Apple Liquid Glass Navbar - Depth ≤20 for WCAG 2.2 AA */
+  .apple-liquid-glass-navbar {
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    position: relative;
+    overflow: visible;
+  }
+  
+  /* Additional backdrop layer for better text contrast when overlapping glass cards */
+  .apple-liquid-glass-navbar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: linear-gradient(180deg, 
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.15) 50%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* Ensure inner container allows overflow for dropdowns */
+  .apple-liquid-glass-navbar > div {
+    overflow: visible;
+  }
+
+  /* Light reflection - Apple style */
+  .apple-liquid-glass-navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    border-radius: 9999px 9999px 0 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), transparent);
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  /* Services Dropdown - Apple Liquid Glass */
+  .services-dropdown-menu {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border: 0.5px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 
+      0 12px 48px rgba(0, 0, 0, 0.6),
+      0 4px 16px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999 !important;
+    position: absolute !important;
+    pointer-events: none;
+  }
+  
+  /* Additional backdrop layer for better contrast */
+  .services-dropdown-menu::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: linear-gradient(180deg, 
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Light reflection for dropdown */
+  .services-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    border-radius: 16px 16px 0 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), transparent);
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .group:hover .services-dropdown-menu,
+  #services-dropdown:hover .services-dropdown-menu,
+  .services-dropdown-menu:hover,
+  .services-dropdown-open {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+    display: block !important;
+  }
+
+  .services-dropdown-menu > div {
+    position: relative;
+    z-index: 1;
+  }
+
+  .apple-liquid-glass-mobile-menu {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 0.5px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    max-height: 0;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease, 
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  /* Navbar link styles - Apple approved */
+  .apple-liquid-glass-navbar a:not(.mobile-nav-link),
+  .apple-liquid-glass-navbar button:not(.mobile-nav-button) {
+    position: relative;
+    z-index: 1;
+    /* Prevent layout shift - maintain border and shadow space */
+    border: 0.5px solid transparent;
+    box-shadow: 0 0 0 transparent;
+    transition: 
+      color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: color, background, border-color, box-shadow;
+  }
+
+  /* Green light glow effect through glass on hover */
+  .apple-liquid-glass-navbar a:hover:not(.no-hover-effect):not(.mobile-nav-link),
+  .apple-liquid-glass-navbar button:hover:not(.no-hover-effect):not(.mobile-nav-button) {
+    background: rgba(64, 255, 170, 0.12);
+    backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+    -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+    box-shadow: 
+      0 0 20px rgba(64, 255, 170, 0.2),
+      0 0 40px rgba(64, 255, 170, 0.1),
+      inset 0 0 30px rgba(64, 255, 170, 0.08),
+      inset 0 1px 0 rgba(64, 255, 170, 0.2);
+    border: 0.5px solid rgba(64, 255, 170, 0.3);
+    transform: none; /* Ensure no transform */
+  }
+
+  /* Green light reflection effect - top glow */
+  .apple-liquid-glass-navbar a:not(.mobile-nav-link)::before,
+  .apple-liquid-glass-navbar button:not(.mobile-nav-button)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    border-radius: 8px 8px 0 0;
+    background: linear-gradient(180deg, rgba(64, 255, 170, 0.25), rgba(64, 255, 170, 0.05), transparent);
+    pointer-events: none;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .apple-liquid-glass-navbar a:hover:not(.no-hover-effect):not(.mobile-nav-link)::before,
+  .apple-liquid-glass-navbar button:hover:not(.no-hover-effect):not(.mobile-nav-button)::before {
+    opacity: 0.8;
+  }
+
+  /* Green light glow from bottom */
+  .apple-liquid-glass-navbar a:not(.mobile-nav-link)::after,
+  .apple-liquid-glass-navbar button:not(.mobile-nav-button)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    border-radius: 0 0 8px 8px;
+    background: radial-gradient(ellipse at center, rgba(64, 255, 170, 0.15), transparent 70%);
+    pointer-events: none;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .apple-liquid-glass-navbar a:hover:not(.no-hover-effect):not(.mobile-nav-link)::after,
+  .apple-liquid-glass-navbar button:hover:not(.no-hover-effect):not(.mobile-nav-button)::after {
+    opacity: 0.6;
+  }
+
+  /* Mobile menu button and links - simple tap feedback */
+  .mobile-nav-button,
+  .mobile-nav-link {
+    position: relative;
+    transition: color 0.2s ease, background 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-nav-button:active,
+  .mobile-nav-link:active {
+    background: rgba(64, 255, 170, 0.1);
+  }
+
+  @media (hover: hover) {
+    .mobile-nav-button:hover,
+    .mobile-nav-link:hover {
+      background: rgba(64, 255, 170, 0.1);
+      color: #40ffaa;
+    }
+  }
+
+  .apple-liquid-glass-navbar a:focus-visible,
+  .apple-liquid-glass-navbar button:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .mobile-menu-open {
+    max-height: 600px !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .mobile-menu-icon-open {
+    transform: rotate(90deg);
+  }
+
+  /* Reduced transparency support */
+  @media (prefers-reduced-transparency: reduce) {
+    .apple-liquid-glass-navbar,
+    .apple-liquid-glass-dropdown,
+    .apple-liquid-glass-mobile-menu {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+
+  /* Increased contrast support */
+  @media (prefers-contrast: more) {
+    .apple-liquid-glass-navbar,
+    .apple-liquid-glass-dropdown,
+    .apple-liquid-glass-mobile-menu {
+      background: rgba(0, 0, 0, 0.6);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu toggle with animation
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('mobile-menu-icon');
+
+  if (menuButton && mobileMenu && menuIcon) {
+    menuButton.addEventListener('click', () => {
+      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isExpanded));
+      
+      if (!isExpanded) {
+        // Open menu
+        mobileMenu.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          mobileMenu.classList.add('mobile-menu-open');
+          menuIcon.classList.add('mobile-menu-icon-open');
+        });
+      } else {
+        // Close menu
+        mobileMenu.classList.remove('mobile-menu-open');
+        menuIcon.classList.remove('mobile-menu-icon-open');
+        setTimeout(() => {
+          mobileMenu.classList.add('hidden');
+        }, 300);
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (
+        !menuButton.contains(e.target as Node) &&
+        !mobileMenu.contains(e.target as Node)
+      ) {
+        menuButton.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('mobile-menu-open');
+        menuIcon.classList.remove('mobile-menu-icon-open');
+        setTimeout(() => {
+          mobileMenu.classList.add('hidden');
+        }, 300);
+      }
+    });
+  }
+
+  // Desktop dropdown with delay on close
+  const servicesDropdown = document.getElementById('services-dropdown');
+  const servicesDropdownMenu = document.getElementById('services-dropdown-menu');
+  let closeTimeout: ReturnType<typeof setTimeout> | null = null;
+  let isMouseOverDropdown = false;
+
+  if (servicesDropdown && servicesDropdownMenu) {
+    const openDropdown = () => {
+      if (closeTimeout) {
+        clearTimeout(closeTimeout);
+        closeTimeout = null;
+      }
+      servicesDropdownMenu.classList.add('services-dropdown-open');
+    };
+
+    const closeDropdown = () => {
+      if (isMouseOverDropdown) return;
+      closeTimeout = setTimeout(() => {
+        if (!isMouseOverDropdown) {
+          servicesDropdownMenu.classList.remove('services-dropdown-open');
+        }
+        closeTimeout = null;
+      }, 300);
+    };
+
+    servicesDropdown.addEventListener('mouseenter', () => {
+      isMouseOverDropdown = true;
+      openDropdown();
+    });
+
+    servicesDropdownMenu.addEventListener('mouseenter', () => {
+      isMouseOverDropdown = true;
+      openDropdown();
+    });
+
+    servicesDropdown.addEventListener('mouseleave', () => {
+      isMouseOverDropdown = false;
+      closeDropdown();
+    });
+
+    servicesDropdownMenu.addEventListener('mouseleave', () => {
+      isMouseOverDropdown = false;
+      closeDropdown();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (
+        !servicesDropdown.contains(e.target as Node) &&
+        !servicesDropdownMenu.contains(e.target as Node)
+      ) {
+        isMouseOverDropdown = false;
+        if (closeTimeout) {
+          clearTimeout(closeTimeout);
+          closeTimeout = null;
+        }
+        servicesDropdownMenu.classList.remove('services-dropdown-open');
+      }
+    });
+  }
+</script>

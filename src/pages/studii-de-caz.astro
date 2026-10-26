@@ -1,0 +1,163 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CaseStudyCard from '@/components/ui/CaseStudyCard.astro';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton.astro';
+import { CASE_STUDIES } from '@/data/caseStudies';
+import '@/styles/global.css';
+
+const breadcrumbs = [
+  { name: 'Acasă', href: '/' },
+  { name: 'Studii de caz', href: '/studii-de-caz' },
+];
+
+const jtbdSteps = [
+  {
+    icon: 'ti-target',
+    title: 'Clarificăm job-ul',
+    description: 'Identificăm ce trebuie să realizeze marketingul pentru business — nu doar ce postări sau reclame să ruleze.',
+  },
+  {
+    icon: 'ti-school',
+    title: 'Pregătim terenul',
+    description: 'Educăm și filtrăm audiența înainte de vânzare, astfel încât mesajul să ajungă la oamenii potriviți.',
+  },
+  {
+    icon: 'ti-rocket',
+    title: 'Executăm sistemul',
+    description: 'Construim conținut, campanii și funnel-uri care livrează acel job — nu acțiuni izolate fără legătură.',
+  },
+  {
+    icon: 'ti-chart-line',
+    title: 'Măsurăm și ajustăm',
+    description: 'Urmărim dacă job-ul e completat în realitate, nu doar metrici de suprafață, și optimizăm pe baza datelor.',
+  },
+];
+---
+
+<BaseLayout
+  title="Studii de caz - Mindleap"
+  description="Descoperă cazuri de succes și rezultatele obținute pentru clienții noștri prin serviciile de marketing digital Mindleap."
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero -->
+  <section class="case-hero relative w-full pt-20 pb-10 md:pt-32 md:pb-20 text-white overflow-hidden">
+    <div class="case-hero-glow pointer-events-none absolute top-[-60px] left-1/2 -translate-x-1/2 w-[360px] h-[200px] rounded-full" aria-hidden="true"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-5 text-balance leading-tight">
+        Studii de caz
+      </h1>
+      <p class="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl mx-auto text-balance leading-relaxed">
+        Descoperă cum am ajutat business-urile să-și atingă obiectivele prin strategii digitale eficiente
+      </p>
+    </div>
+  </section>
+
+  <!-- JTBD — cum citim rezultatele -->
+  <section class="case-section case-section-alt relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute top-0 left-0 w-full md:w-1/2 h-full" style="background: radial-gradient(circle at 30% 40%, rgba(64,255,170,0.10), transparent 50%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto mb-8 md:mb-10 text-center">
+        <div class="mb-4">
+          <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">
+            Metodologia din spatele rezultatelor
+          </span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-white leading-tight text-balance">
+          Nu măsurăm likes. Măsurăm dacă marketingul își face treaba.
+        </h2>
+        <p class="text-base sm:text-lg text-white/70 leading-relaxed">
+          Fiecare studiu de caz de aici pornește din același cadru: <span class="text-primary-mint font-medium">Jobs-to-be-Done</span>.
+          Înainte de cifre, înțelegem ce „job" trebuie să execute marketingul pentru acel business — apoi urmărim dacă l-a dus la capăt.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 mb-8 md:mb-10">
+        {jtbdSteps.map((step) => (
+          <div class="glass-card-dark p-5 md:p-6">
+            <div
+              class="w-9 h-9 rounded-xl flex items-center justify-center mb-3"
+              style="background: linear-gradient(135deg, rgba(64,255,170,0.18), rgba(255,255,255,0.04)); border: 0.5px solid rgba(64,255,170,0.35);"
+            >
+              <i class={`ti ${step.icon} text-primary-mint text-lg`} aria-hidden="true"></i>
+            </div>
+            <h3 class="text-base md:text-lg font-bold text-white mb-2">{step.title}</h3>
+            <p class="text-sm text-white/65 leading-relaxed">{step.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-center text-sm md:text-base text-white/55 max-w-2xl mx-auto">
+        În studiile individuale vezi aplicarea concretă — pașii, serviciile livrate și rezultatele măsurate pentru acel job specific.
+      </p>
+    </div>
+  </section>
+
+  <!-- Lista studii de caz -->
+  <section class="case-section relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(circle at 70% 30%, rgba(64,255,170,0.08), transparent 55%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto mb-8 md:mb-10 text-center">
+        <div class="mb-4">
+          <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">
+            Rezultate reale
+          </span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-white leading-tight">
+          Studii de caz disponibile
+        </h2>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {CASE_STUDIES.map((study) => (
+          <CaseStudyCard study={study} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="case-cta relative py-16 md:py-24 text-white w-full overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(64,255,170,0.08), transparent 70%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-balance">
+        Vrei rezultate similare?
+      </h2>
+      <p class="text-base sm:text-lg md:text-xl text-white/70 mb-8 md:mb-10 max-w-2xl mx-auto text-balance">
+        Programează o discuție și vedem împreună ce are sens pentru businessul tău
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3.5 justify-center items-center flex-wrap">
+        <LiquidGlassButton href="/contact" variant="glass-primary">
+          Contactează-ne
+        </LiquidGlassButton>
+        <LiquidGlassButton href="/servicii" variant="glass-secondary">
+          Vezi serviciile
+        </LiquidGlassButton>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .case-hero,
+  .case-section {
+    background: radial-gradient(circle at 50% 0%, #16332b 0%, #0a0e1a 60%);
+  }
+
+  .case-section-alt {
+    background: radial-gradient(circle at 70% 50%, #16332b 0%, #0a0e1a 60%);
+  }
+
+  .case-cta {
+    background: radial-gradient(circle at 50% 100%, #16332b 0%, #0a0e1a 60%);
+  }
+
+  .case-hero-glow {
+    background: rgba(64, 255, 170, 0.12);
+    filter: blur(60px);
+  }
+</style>

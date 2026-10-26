@@ -1,0 +1,218 @@
+---
+import LegalOperatorCard from '@/components/legal/LegalOperatorCard.astro';
+import LegalPageShell from '@/components/legal/LegalPageShell.astro';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton.astro';
+import { SITE } from '@/config/site';
+import { CONTACT_EMAIL, getLegalFullAddress } from '@/config/legal';
+
+const breadcrumbs = [
+  { name: 'Acasă', href: '/' },
+  { name: 'Termeni și condiții', href: '/legal/termeni-si-conditii' },
+];
+
+const { company } = SITE;
+const fullAddress = getLegalFullAddress();
+---
+
+<LegalPageShell
+  metaTitle="Termeni și condiții - Mindleap"
+  metaDescription="Termenii și condițiile de utilizare a website-ului și serviciilor MINDLEAP STRATEGIES SRL."
+  breadcrumbs={breadcrumbs}
+  title="Termeni și condiții"
+>
+  <div slot="intro" class="legal-card legal-intro">
+    <p>
+      Prezentul document reglementează accesul și utilizarea website-ului <strong>mindleap.ro</strong>, precum și relația contractuală dintre <strong>{company.legalName}</strong> și utilizatorii / clienții săi. Prin utilizarea website-ului sau solicitarea serviciilor noastre, confirmați că ați citit și acceptat acești termeni.
+    </p>
+  </div>
+
+  <div class="legal-content">
+    <section class="legal-section">
+      <h2>1. Date de identificare ale operatorului</h2>
+      <div class="legal-card">
+        <LegalOperatorCard />
+        <p class="legal-muted mt-4">
+          În sensul Regulamentului (UE) 2016/679 (GDPR) și al Legii nr. 190/2018, {company.legalName} acționează ca <strong>operator de date cu caracter personal</strong> pentru datele colectate prin website și formularele de contact, în condițiile descrise în secțiunile de mai jos și în <a href="/legal/politica-confidentialitate" class="legal-link">Politica de confidențialitate</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>2. Domeniul de aplicare și acceptare</h2>
+      <div class="legal-prose">
+        <p><strong>2.1.</strong> Acești termeni se aplică tuturor vizitatorilor website-ului, persoanelor care ne contactează prin formulare, email sau alte canale, precum și clienților care utilizează serviciile {company.legalName} (denumită în continuare „Mindleap”, „noi”).</p>
+        <p><strong>2.2.</strong> Dacă nu sunteți de acord cu acești termeni, vă rugăm să nu utilizați website-ul și să nu ne transmiteți date personale.</p>
+        <p><strong>2.3.</strong> Pentru servicii contractate, prevederile contractului / ofertei comerciale semnate au prioritate față de prezentul document, în măsura în care există contradicții.</p>
+        <p><strong>2.4.</strong> Website-ul este destinat în principal activității B2B (business-to-business). Dacă sunteți consumator în sensul Legii nr. 296/2004, se aplică și drepturile imperativ prevăzute de legislația de protecție a consumatorilor, în măsura în care sunt aplicabile.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>3. Servicii oferite</h2>
+      <div class="legal-prose">
+        <p>Mindleap oferă servicii de marketing digital, inclusiv, fără a se limita la:</p>
+        <ul>
+          <li>strategie și audit de marketing;</li>
+          <li>social media management;</li>
+          <li>reels și short form video;</li>
+          <li>advertising și performance marketing;</li>
+          <li>copywriting și funnel;</li>
+          <li>design grafic și direcție creativă.</li>
+        </ul>
+        <p>Detaliile, livrabilele, termenele, prețurile și condițiile specifice se stabilesc prin ofertă comercială și/sau contract de prestări servicii acceptat de ambele părți.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>4. Utilizarea website-ului</h2>
+      <div class="legal-prose">
+        <p><strong>4.1.</strong> Vă angajați să utilizați website-ul în mod legal, fără a încerca acces neautorizat la sisteme, a distribui malware, a extrage automat date (scraping abuziv) sau a afecta funcționarea site-ului.</p>
+        <p><strong>4.2.</strong> Conținutul publicat pe website (texte, imagini, elemente de design, mărci) este protejat de legislația privind drepturile de autor și aparține Mindleap sau licențiatorilor săi, cu excepția cazurilor indicate explicit.</p>
+        <p><strong>4.3.</strong> Informațiile de pe website au caracter informativ și nu constituie ofertă fermă de contract, cu excepția situațiilor în care se menționează explicit contrariul.</p>
+        <p><strong>4.4.</strong> Ne rezervăm dreptul de a modifica, suspenda sau întrerupe temporar accesul la website, total sau parțial, pentru mentenanță, actualizări sau motive de securitate.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>5. Date cu caracter personal</h2>
+      <div class="legal-prose">
+        <p><strong>5.1. Ce date putem colecta.</strong> În funcție de modul în care interacționați cu noi, putem prelucra: nume, prenume, denumire firmă, funcție, adresă email, număr de telefon, mesaje transmise prin formulare, date tehnice (adresă IP, tip browser, dispozitiv), date de utilizare a website-ului și preferințe privind cookie-urile.</p>
+        <p><strong>5.2. Temeiuri legale (GDPR art. 6).</strong> Prelucrăm datele pe baza:</p>
+        <ul>
+          <li><strong>consimțământului</strong> — pentru cookie-uri neesențiale, comunicări de marketing (dacă este cazul);</li>
+          <li><strong>executării unui contract</strong> sau demersurilor precontractuale — pentru răspuns la solicitări, ofertare, prestare servicii;</li>
+          <li><strong>obligației legale</strong> — contabilitate, fiscalitate, arhivare documente;</li>
+          <li><strong>interesului legitim</strong> — securitate IT, prevenirea abuzurilor, îmbunătățirea website-ului, comunicări comerciale B2B rezonabile, în limitele legii.</li>
+        </ul>
+        <p><strong>5.3. Scopuri.</strong> Răspundem la solicitări, administrăm relația cu clienții, prestăm servicii contractate, analizăm traficul website-ului, asigurăm securitatea, respectăm obligații legale și, după caz, comunicări comerciale.</p>
+        <p><strong>5.4. Durata stocării.</strong> Păstrăm datele cât timp este necesar pentru scopurile indicate, pentru durata relației contractuale, perioadele de prescripție aplicabile și obligațiile legale de arhivare.</p>
+        <p><strong>5.5. Destinatari.</strong> Datele pot fi accesate de personalul autorizat Mindleap, furnizori IT (hosting, email, analytics, CRM, formulare), contabili / consultanți, în baza obligațiilor contractuale de confidențialitate și, unde este cazul, a Clauzelor Contractuale Standard UE pentru transferuri internaționale.</p>
+        <p><strong>5.6. Drepturile persoanelor vizate.</strong> Aveți dreptul de acces, rectificare, ștergere, restricționare, portabilitate, opoziție și de a nu fi supus unei decizii automate cu efect juridic semnificativ, în condițiile legii. Puteți retrage consimțământul oricând, fără a afecta legalitatea prelucrării anterioare.</p>
+        <p><strong>5.7. Plângeri.</strong> Ne puteți contacta la <a href={`mailto:${CONTACT_EMAIL}`} class="legal-link">{CONTACT_EMAIL}</a>. De asemenea, aveți dreptul de a depune plângere la <strong>Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP)</strong> — <a href="https://www.dataprotection.ro" class="legal-link" target="_blank" rel="noopener noreferrer">www.dataprotection.ro</a>.</p>
+        <p>Detalii suplimentare: <a href="/legal/politica-confidentialitate" class="legal-link">Politica de confidențialitate</a>.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>6. Cookie-uri și tehnologii similare</h2>
+      <div class="legal-prose">
+        <p>Website-ul utilizează cookie-uri și tehnologii similare (local storage, pixeli) conform Directivei 2002/58/CE (ePrivacy), transpusă în legislația română, și în conformitate cu GDPR.</p>
+        <p>Folosim cookie-uri strict necesare pentru funcționarea site-ului și, cu consimțământul dvs., cookie-uri de analiză și marketing (ex.: Google Analytics, tag-uri publicitare, rețele sociale).</p>
+        <p>Puteți gestiona preferințele din bannerul de cookie-uri sau din pagina <a href="/legal/personalizeaza-cookie-uri" class="legal-link">Personalizează cookie-uri</a>. Politica completă: <a href="/legal/cookies" class="legal-link">Politica Cookies</a>.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>7. Securitatea datelor și incidente cibernetice</h2>
+      <div class="legal-card legal-warning">
+        <div class="legal-prose">
+          <p><strong>7.1. Măsuri de securitate.</strong> Implementăm măsuri tehnice și organizatorice rezonabile pentru protejarea datelor (acces restricționat, parole, actualizări, furnizori verificați, backup, HTTPS). Niciun sistem online nu poate garanta securitate absolută.</p>
+          <p><strong>7.2. Limitarea răspunderii pentru incidente externe.</strong> Mindleap <strong>nu își asumă răspunderea</strong> pentru pierderi, divulgări sau acces neautorizat la date cauzate de:</p>
+          <ul>
+            <li>atacuri cibernetice ale unor terți (hacking, ransomware, phishing, exploatarea unor vulnerabilități zero-day);</li>
+            <li>compromiterea infrastructurii unor furnizori terți în afara controlului nostru rezonabil;</li>
+            <li>acțiuni ale utilizatorilor (parole slabe, partajare credențiale, malware pe dispozitivele proprii);</li>
+            <li>forță majoră sau evenimente imprevizibile și inevitabile.</li>
+          </ul>
+          <p>Această limitare se aplică în măsura permisă de legea română și nu exclude răspunderea pentru neglijență gravă sau intenție din partea noastră.</p>
+          <p><strong>7.3. Notificarea incidentelor.</strong> În cazul unui incident de securitate care afectează date personale și prezintă risc pentru drepturile persoanelor, vom notifica ANSPDCP în termen de <strong>72 de ore</strong> de la conștientizare, dacă este cazul conform GDPR art. 33, și persoanele vizate afectate, dacă este necesar conform art. 34. Dacă suspectați o problemă de securitate legată de datele dvs., contactați-ne imediat la <a href={`mailto:${CONTACT_EMAIL}`} class="legal-link">{CONTACT_EMAIL}</a>.</p>
+          <p><strong>7.4. Cadru legal relevant.</strong> Respectăm, în măsura aplicabilă: Regulamentul (UE) 2016/679 (GDPR), Legea nr. 190/2018, Legea nr. 363/2018 privind securitatea rețelelor și sistemelor informatice (transpunere NIS), Legea nr. 365/2002 privind comerțul electronic.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>8. Contractarea serviciilor, prețuri și plată</h2>
+      <div class="legal-prose">
+        <p><strong>8.1.</strong> Colaborarea începe prin acceptarea unei oferte sau semnarea unui contract. Ofertele au valabilitate de 30 de zile, dacă nu se specifică altfel.</p>
+        <p><strong>8.2.</strong> Prețurile sunt în RON, cu sau fără TVA conform statutului fiscal aplicabil. Plățile se fac conform termenelor din factură / contract.</p>
+        <p><strong>8.3.</strong> Întârzierile la plată pot duce la suspendarea serviciilor și penalități conform legii (Legea nr. 72/2013 privind termenele de plată).</p>
+        <p><strong>8.4.</strong> Clientul furnizează informațiile, materialele și accesele necesare în timp util. Întârzierile clientului pot prelungi termenele de livrare.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>9. Proprietate intelectuală</h2>
+      <div class="legal-prose">
+        <p><strong>9.1.</strong> Materialele create de Mindleap rămân în proprietatea noastră până la plata integrală a serviciilor facturate.</p>
+        <p><strong>9.2.</strong> După plata integrală, drepturile de utilizare se transferă conform contractului, cu excepția instrumentelor, șabloanelor, know-how-ului și metodologiilor interne care rămân ale Mindleap.</p>
+        <p><strong>9.3.</strong> Putem prezenta lucrările în portofoliu, cu acordul clientului sau dacă nu s-a stipulat confidențialitate contrară.</p>
+        <p><strong>9.4.</strong> Clientul garantează că materialele furnizate nu încalcă drepturi ale terților și ne despăgubește pentru pretenții rezultate din încălcări atribuibile clientului.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>10. Confidențialitate comercială</h2>
+      <div class="legal-prose">
+        <p>Părțile se obligă să păstreze confidențiale informațiile comerciale, financiare, strategice și tehnice obținute în cadrul colaborării, cu excepția cazurilor în care divulgarea este impusă de lege sau cerută de autorități competente.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>11. Garanții, rezultate marketing și limitarea răspunderii</h2>
+      <div class="legal-prose">
+        <p><strong>11.1.</strong> Prestăm servicii conform standardelor profesionale din industrie și specificațiilor contractului.</p>
+        <p><strong>11.2.</strong> <strong>Nu garantăm rezultate comerciale specifice</strong> (vânzări, lead-uri, ROI, poziții SEO, reach, conversii). Performanța depinde de piață, ofertă, buget, sezon, algoritmi platformelor și factori externi.</p>
+        <p><strong>11.3.</strong> În măsura permisă de lege, răspunderea totală a Mindleap față de client pentru prejudicii directe este limitată la <strong>valoarea serviciilor plătite de client în ultimele 12 luni</strong> pentru proiectul în cauză, cu excepția cazurilor de intenție sau neglijență gravă.</p>
+        <p><strong>11.4.</strong> Nu răspundem pentru pierderi indirecte, profit nerealizat, pierderea oportunităților de afaceri sau daune morale, în măsura permisă de lege.</p>
+        <p><strong>11.5.</strong> Recomandările și conținutul publicat pe blog / resurse au caracter informativ și nu constituie consultanță juridică, fiscală sau financiară personalizată.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>12. Forță majoră</h2>
+      <div class="legal-prose">
+        <p>Niciuna dintre părți nu răspunde pentru neexecutarea obligațiilor cauzată de evenimente imprevizibile și de neînlăturat: calamități naturale, război, acte ale autorităților, pandemii, întreruperi majore de internet, atacuri cibernetice la scară largă, indisponibilitatea platformelor terțe (Meta, Google etc.) dincolo de controlul rezonabil al părții afectate.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>13. Rezilierea</h2>
+      <div class="legal-prose">
+        <p><strong>13.1.</strong> Contractul poate fi reziliat de oricare parte cu preaviz de 30 de zile, dacă nu se prevede altfel.</p>
+        <p><strong>13.2.</strong> La reziliere, clientul plătește serviciile prestate până la data rezilierii și costurile deja angajate.</p>
+        <p><strong>13.3.</strong> Putem rezilia imediat în caz de neplată, încălcare gravă a termenilor sau utilizare abuzivă a serviciilor.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>14. Protecția consumatorilor</h2>
+      <div class="legal-prose">
+        <p>Dacă sunteți consumator (persoană fizică care acționează în afara activității profesionale), beneficiați de drepturile prevăzute de OUG nr. 34/2014 privind drepturile consumatorilor în contractele încheiate la distanță, unde este cazul, inclusiv informarea precontractuală și dreptul de retragere în termenele legale, dacă serviciul nu a fost integral executat cu acordul expres al consumatorului.</p>
+        <p>Pentru reclamații, puteți contacta <strong>Autoritatea Națională pentru Protecția Consumatorilor (ANPC)</strong> — <a href="https://anpc.ro" class="legal-link" target="_blank" rel="noopener noreferrer">anpc.ro</a>. Platforma europeană de soluționare online a litigiilor (SOL/ODR): <a href="https://ec.europa.eu/consumers/odr" class="legal-link" target="_blank" rel="noopener noreferrer">ec.europa.eu/consumers/odr</a>.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>15. Legea aplicabilă și soluționarea litigiilor</h2>
+      <div class="legal-prose">
+        <p><strong>15.1.</strong> Prezentii termeni sunt guvernați de <strong>legea română</strong>.</p>
+        <p><strong>15.2.</strong> Părțile vor încerca soluționarea amiabilă a oricărui litigiu. În caz contrar, pentru clienții persoane juridice / profesioniști, sunt competente instanțele din România de la sediul Mindleap, dacă legea nu prevede altfel imperativ.</p>
+        <p><strong>15.3.</strong> Pentru consumatori, se aplică regulile de competență teritorială prevăzute de Codul de procedură civilă și legislația de protecție a consumatorilor.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>16. Modificări</h2>
+      <div class="legal-prose">
+        <p>Putem actualiza acești termeni pentru a reflecta modificări legislative, operaționale sau ale serviciilor. Versiunea actualizată va fi publicată pe această pagină, cu data „Ultima actualizare”. Utilizarea continuă a website-ului după publicare constituie acceptarea modificărilor, în limitele legii.</p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>17. Contact</h2>
+      <div class="legal-card">
+        <p class="legal-muted">Pentru întrebări legale, protecția datelor sau exercitarea drepturilor GDPR:</p>
+        <dl class="legal-dl">
+          <div><dt>Email</dt><dd><a href={`mailto:${CONTACT_EMAIL}`} class="legal-link">{CONTACT_EMAIL}</a></dd></div>
+          <div><dt>Telefon</dt><dd>{SITE.phone}</dd></div>
+          <div><dt>Adresă</dt><dd>{fullAddress}</dd></div>
+        </dl>
+        <div class="legal-actions">
+          <LiquidGlassButton href="/contact" variant="glass-primary">Contactează-ne</LiquidGlassButton>
+          <LiquidGlassButton href="/legal/politica-confidentialitate" variant="glass-secondary">Politica de confidențialitate</LiquidGlassButton>
+        </div>
+      </div>
+    </section>
+  </div>
+</LegalPageShell>

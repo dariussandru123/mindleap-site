@@ -1,0 +1,108 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton.astro';
+import '@/styles/global.css';
+
+const funnyLines = [
+  'Pagina asta avea un CTR de 0%. Am arhivat-o la „campanii moarte”.',
+  'URL-ul a fost dezaprobat de algoritm. Buget de salvage: zero lei.',
+  'S-a rătăcit între un reel viral și un spreadsheet de KPIs.',
+  '404: conversion rate indisponibil. Homepage-ul merge mai bine oricum.',
+  'Pagina a plecat în lunch break. Probabil la un workshop de growth.',
+  'Nu găsim pagina. Poate a intrat în retargeting și n-a mai ieșit.',
+  'Această pagină a fost outperformed de homepage. Am oprit bugetul.',
+  'Eroare 404 — funnel-ul s-a rupt aici. Dar noi îl reparăm la clienți.',
+];
+
+const randomLine = funnyLines[Math.floor(Math.random() * funnyLines.length)];
+---
+
+<BaseLayout
+  title="404 - Pagina nu a fost găsită - Mindleap"
+  description="Pagina pe care o cauți nu există. Revino acasă sau explorează serviciile Mindleap."
+  noindex={true}
+>
+  <section class="not-found-page relative min-h-[75vh] flex items-center py-24 md:py-32 overflow-hidden text-white">
+    <div class="not-found-glow pointer-events-none absolute top-[-80px] left-1/2 -translate-x-1/2 w-[480px] h-[240px] rounded-full" aria-hidden="true"></div>
+
+    <div class="relative w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs font-medium uppercase tracking-[0.14em] text-primary-mint mb-6">Eroare 404</p>
+
+      <p class="not-found-code text-[7rem] sm:text-[9rem] font-bold leading-none mb-2 select-none" aria-hidden="true">404</p>
+
+      <div class="not-found-card mx-auto max-w-2xl">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-balance">
+          Ups, pagina s-a pierdut în analytics
+        </h1>
+
+        <p class="text-base sm:text-lg text-white/75 mb-3 leading-relaxed text-balance">
+          {randomLine}
+        </p>
+
+        <p class="text-sm sm:text-base text-white/50 mb-8 leading-relaxed">
+          Link greșit, pagină mutată sau typo în URL. Se întâmplă — chiar și marketerii cu tracking perfect se rătăcesc uneori.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3.5 justify-center items-center flex-wrap">
+          <LiquidGlassButton href="/" variant="glass-primary">
+            Înapoi acasă
+          </LiquidGlassButton>
+          <LiquidGlassButton href="/servicii" variant="glass-secondary">
+            Vezi serviciile
+          </LiquidGlassButton>
+          <LiquidGlassButton href="/contact" variant="glass-secondary">
+            Contactează-ne
+          </LiquidGlassButton>
+        </div>
+      </div>
+
+      <p class="mt-10 text-xs text-white/35">
+        Dacă crezi că e o greșeală din partea noastră, spune-ne la <a href="mailto:hello@mindleap.ro" class="not-found-link">hello@mindleap.ro</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found-page {
+    background: radial-gradient(circle at 50% 0%, #16332b 0%, #0a0e1a 60%);
+  }
+
+  .not-found-glow {
+    background: rgba(64, 255, 170, 0.1);
+    filter: blur(60px);
+  }
+
+  .not-found-code {
+    background: linear-gradient(180deg, #40ffaa 0%, rgba(64, 255, 170, 0.35) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 80px rgba(64, 255, 170, 0.15);
+  }
+
+  .not-found-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 0.5px solid rgba(255, 255, 255, 0.14);
+    border-radius: 18px;
+    padding: 28px 24px;
+  }
+
+  @media (min-width: 640px) {
+    .not-found-card {
+      padding: 36px 32px;
+    }
+  }
+
+  .not-found-link {
+    color: #40ffaa;
+    text-decoration: none;
+  }
+
+  .not-found-link:hover {
+    color: #bfffe0;
+    text-decoration: underline;
+  }
+</style>

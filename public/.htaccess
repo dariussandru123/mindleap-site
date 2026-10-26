@@ -1,0 +1,15 @@
+# Canonical host: https://mindleap.ro (non-www, HTTPS)
+# Redirect www.mindleap.ro -> https://mindleap.ro
+
+RewriteEngine On
+
+# www -> non-www
+RewriteCond %{HTTP_HOST} ^www\.mindleap\.ro$ [NC]
+RewriteRule ^(.*)$ https://mindleap.ro/$1 [L,R=301]
+
+# HTTP -> HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://mindleap.ro/$1 [L,R=301]
+
+# LLM compatibility alias
+Redirect 301 /llm.txt /llms.txt

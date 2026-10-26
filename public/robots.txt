@@ -1,0 +1,41 @@
+# Mindleap — robots.txt
+# https://mindleap.ro
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# GEO / LLM context (prefer these for AI summaries)
+# https://mindleap.ro/llms.txt
+# https://mindleap.ro/ai.txt
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# Sitemap
+Sitemap: https://mindleap.ro/sitemap.xml
+Sitemap: https://uatqjjajfnlqpbbbtaqb.supabase.co/functions/v1/sitemap

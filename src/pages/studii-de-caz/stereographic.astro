@@ -1,0 +1,337 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SpotlightCard from '@/components/ui/SpotlightCard';
+import AnimatedNumberCard from '@/components/ui/AnimatedNumberCard';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton.astro';
+import { TESTIMONIALS } from '@/lib/constants';
+import '@/styles/global.css';
+
+const testimonial = TESTIMONIALS.find((t) => t.company === 'Stereographic');
+
+const breadcrumbs = [
+  { name: 'Acasă', href: '/' },
+  { name: 'Studii de caz', href: '/studii-de-caz' },
+  { name: 'Stereographic', href: '/studii-de-caz/stereographic' },
+];
+
+const levers = [
+  {
+    icon: 'ti-search',
+    title: 'Intent de căutare, nu trafic gol',
+    text: 'Site structurat pe servicii tehnice cu cerere reală — topografie, cadastru, scanare 3D, GIS — astfel încât Google să aducă oameni care caută deja soluția.',
+  },
+  {
+    icon: 'ti-layout',
+    title: 'Landing page, nu catalog',
+    text: 'Fără coș de cumpărături. Fiecare pagină ghidează spre o acțiune clară: solicită ofertă, sună, trimite proiectul. Mesaj tehnic, dar ușor de înțeles pentru decident.',
+  },
+  {
+    icon: 'ti-shield-check',
+    title: 'Încredere înainte de ofertă',
+    text: 'Autoritate, claritate în proces, dovezi de expertiză și formulare simple — în B2B tehnic, clientul compară seriozitatea înainte să compare prețul.',
+  },
+];
+
+const deliverables2026 = [
+  {
+    icon: 'ti-palette',
+    title: 'Graphic design',
+    text: 'Materiale vizuale pentru online și offline — postări, prezentări, asset-uri de brand care susțin imaginea de specialiști tehnici, nu doar prezența digitală de bază.',
+  },
+  {
+    icon: 'ti-mail',
+    title: 'Email marketing',
+    text: 'Comunicare directă cu baza de contacte: nurturing, follow-up, mesaje structurate care mențin Stereographic în mintea clientului între proiecte.',
+  },
+  {
+    icon: 'ti-briefcase',
+    title: 'Business development',
+    text: 'Sprijin activ în dezvoltarea afacerii — identificare oportunități, structurare oferte, aliniere între ce promitem în marketing și ce livrăm în teren.',
+  },
+  {
+    icon: 'ti-brand-facebook',
+    title: 'Social media',
+    text: 'Administrare și conținut pe Facebook, Instagram și LinkedIn — canale diferite, mesaje adaptate: awareness, dovezi de lucru, autoritate B2B.',
+  },
+  {
+    icon: 'ti-chart-arrows-vertical',
+    title: 'Vânzări',
+    text: 'Marketing legat de pipeline real: cereri, ofertare, contracte. Nu raportăm reach — urmărim dacă ajung proiecte noi și vânzări în registru.',
+  },
+  {
+    icon: 'ti-world',
+    title: 'SEO & website',
+    text: 'Motorul care a pornit totul: landing page de servicii tehnice optimizată pentru conversie și căutare organică — fără magazin online, cu rezultate în euro.',
+  },
+];
+---
+
+<BaseLayout
+  title="Studiu de caz: Stereographic - Mindleap"
+  description="Stereographic: peste 100.000 € din SEO plus graphic design, email marketing, business development și social media (Facebook, Instagram, LinkedIn) în 2026."
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero -->
+  <section class="case-hero relative w-full pt-20 pb-10 md:pt-32 md:pb-20 text-white overflow-hidden">
+    <div class="case-hero-glow pointer-events-none absolute top-[-60px] left-1/2 -translate-x-1/2 w-[360px] h-[200px] rounded-full" aria-hidden="true"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="mb-6 flex justify-center">
+        <div class="case-logo-light">
+          <img
+            src="/parteneri/logo-stereographic.webp"
+            alt="Stereographic"
+            class="h-12 md:h-14 w-auto object-contain"
+            width="200"
+            height="56"
+            loading="eager"
+          />
+        </div>
+      </div>
+      <div class="mb-4">
+        <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">
+          Studiu de caz · Parteneriat 2026
+        </span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-5 text-balance leading-tight">
+        Peste 100.000 € din SEO
+      </h1>
+      <p class="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl mx-auto text-balance leading-relaxed">
+        Și în 2026 am preluat tot ecosistemul: graphic design, email marketing, business development, social media și vânzări.
+      </p>
+    </div>
+  </section>
+
+  <!-- Provocarea -->
+  <section class="case-section relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute top-0 left-0 w-full md:w-1/2 h-full" style="background: radial-gradient(circle at 30% 40%, rgba(64,255,170,0.10), transparent 50%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+        <div class="lg:col-span-2">
+          <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">Punctul de plecare</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mt-3 text-white leading-tight">
+            Site-ul exista.<br />Clienții nu veneau.
+          </h2>
+        </div>
+        <div class="lg:col-span-3 space-y-4 text-base sm:text-lg text-white/75 leading-relaxed">
+          <p>
+            <a href="https://stereographic.ro" target="_blank" rel="noopener noreferrer" class="text-primary-mint hover:underline">Stereographic</a> oferă servicii tehnice specializate — topografie, cadastru, scanare 3D, GIS, GPR — pentru proiecte unde precizia și autoritatea contează.
+          </p>
+          <p>
+            Aveau deja un site, dar nu genera aproape deloc cereri. În nișa asta, clientul nu cumpără impulsiv: caută, compară, verifică seriozitatea — apoi cere ofertă. Site-ul nu făcea această treabă.
+          </p>
+          <p>
+            Job-ul de marketing nu era „să aibă prezență online", ci <span class="text-primary-mint font-medium">să aducă proiecte calificate și vânzări reale</span> — mai întâi prin SEO și website, apoi printr-un ecosistem complet pe care l-am preluat în 2026.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rezultate -->
+  <section class="case-section case-section-alt relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(64,255,170,0.08), transparent 70%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto mb-8 md:mb-10 text-center">
+        <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">Rezultate</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4 text-white leading-tight">
+          Cifre din colaborare
+        </h2>
+        <p class="text-base sm:text-lg text-white/65">
+          Vânzări și pipeline din SEO — extinse în 2026 cu social media, email, design și business development.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-6 mb-8">
+        <AnimatedNumberCard
+          client:only="react"
+          title="Vânzări din SEO"
+          value={100000}
+          suffix="+ €"
+          color="rgba(64, 255, 170, 1)"
+          delay={0}
+        />
+        <AnimatedNumberCard
+          client:only="react"
+          title="Proiecte ofertate"
+          value={87000}
+          suffix="+ €"
+          color="rgba(64, 255, 170, 0.85)"
+          delay={120}
+        />
+        <AnimatedNumberCard
+          client:only="react"
+          title="Contracte semnate"
+          value={28000}
+          suffix="+ €"
+          color="rgba(64, 255, 170, 0.7)"
+          delay={240}
+        />
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <SpotlightCard client:visible spotlightColor="rgba(64, 255, 170, 0.2)" className="!p-5 md:!p-6 rounded-xl text-center">
+          <p class="text-base sm:text-lg text-white/75 leading-relaxed">
+            Nu e vorba de un magazin care vinde produse în coș. E vorba de o <strong class="text-white font-semibold">pagină de servicii tehnice</strong> care funcționează ca motor de vânzări — aduce oameni cu nevoie clară, îi convinge de competență și îi duce la cerere de ofertă.
+          </p>
+        </SpotlightCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- Livrabile 2026 -->
+  <section class="case-section relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute top-0 right-0 w-full md:w-1/2 h-full" style="background: radial-gradient(circle at 70% 30%, rgba(64,255,170,0.08), transparent 55%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto mb-8 md:mb-10 text-center">
+        <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">2026 · Ecosistem complet</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4 text-white leading-tight">
+          Tot ce ține de creștere, sub un singur partener
+        </h2>
+        <p class="text-base sm:text-lg text-white/65 max-w-2xl mx-auto">
+          După rezultatele din SEO, am preluat în 2026 întregul stack de marketing și vânzări — de la vizual la pipeline.
+        </p>
+      </div>
+
+      <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+        {deliverables2026.map((item) => (
+          <div class="glass-card-dark p-5 md:p-6 h-full">
+            <div
+              class="w-9 h-9 rounded-xl flex items-center justify-center mb-3"
+              style="background: linear-gradient(135deg, rgba(64,255,170,0.18), rgba(255,255,255,0.04)); border: 0.5px solid rgba(64,255,170,0.35);"
+            >
+              <i class={`ti ${item.icon} text-primary-mint text-lg`} aria-hidden="true"></i>
+            </div>
+            <h3 class="text-base md:text-lg font-bold text-white mb-2">{item.title}</h3>
+            <p class="text-sm text-white/65 leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="max-w-3xl mx-auto mt-8">
+        <SpotlightCard client:visible spotlightColor="rgba(64, 255, 170, 0.2)" className="!p-5 md:!p-6 rounded-xl">
+          <p class="text-sm font-semibold text-primary-mint uppercase tracking-wider mb-3">Social media 2026</p>
+          <div class="flex flex-wrap gap-3 mb-4">
+            <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-white/80">
+              <i class="ti ti-brand-facebook text-primary-mint" aria-hidden="true"></i> Facebook
+            </span>
+            <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-white/80">
+              <i class="ti ti-brand-instagram text-primary-mint" aria-hidden="true"></i> Instagram
+            </span>
+            <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-white/80">
+              <i class="ti ti-brand-linkedin text-primary-mint" aria-hidden="true"></i> LinkedIn
+            </span>
+          </div>
+          <p class="text-sm md:text-base text-white/70 leading-relaxed">
+            Trei platforme, trei roluri: reach și dovezi de lucru, vizual și autenticitate, autoritate B2B și networking profesional. Totul legat de același obiectiv — <strong class="text-white font-medium">cereri, oferte și contracte</strong>.
+          </p>
+        </SpotlightCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ce a făcut diferența (SEO) -->
+  <section class="case-section case-section-alt relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute top-0 right-0 w-full md:w-1/2 h-full" style="background: radial-gradient(circle at 70% 30%, rgba(64,255,170,0.08), transparent 55%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto mb-8 md:mb-10 text-center">
+        <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">Fundament · SEO</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 text-white leading-tight">
+          De ce a mers SEO-ul
+        </h2>
+      </div>
+
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+        {levers.map((item) => (
+          <div class="glass-card-dark p-5 md:p-6 h-full">
+            <div
+              class="w-9 h-9 rounded-xl flex items-center justify-center mb-3"
+              style="background: linear-gradient(135deg, rgba(64,255,170,0.18), rgba(255,255,255,0.04)); border: 0.5px solid rgba(64,255,170,0.35);"
+            >
+              <i class={`ti ${item.icon} text-primary-mint text-lg`} aria-hidden="true"></i>
+            </div>
+            <h3 class="text-base md:text-lg font-bold text-white mb-2">{item.title}</h3>
+            <p class="text-sm text-white/65 leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  {testimonial && (
+    <section class="case-section case-section-alt relative py-16 md:py-24 w-full text-white overflow-hidden">
+      <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <SpotlightCard client:visible spotlightColor="rgba(64, 255, 170, 0.2)" className="!p-5 md:!p-6 rounded-xl">
+            <blockquote class="mb-5">
+              <p class="text-base sm:text-lg text-white/80 leading-relaxed italic">
+                "{testimonial.content}"
+              </p>
+            </blockquote>
+            <div class="flex items-center justify-between gap-4 pt-4 border-t border-white/10">
+              <div>
+                <cite class="not-italic font-semibold text-white text-lg block">{testimonial.author}</cite>
+                <p class="text-white/60 text-sm mt-1">{testimonial.role}, {testimonial.company}</p>
+              </div>
+              <div class="flex text-yellow-400 text-lg flex-shrink-0" aria-label={`${testimonial.rating} din 5 stele`}>
+                {Array.from({ length: testimonial.rating }).map(() => (
+                  <span aria-hidden="true">★</span>
+                ))}
+              </div>
+            </div>
+          </SpotlightCard>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="case-cta relative py-16 md:py-24 text-white w-full overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(64,255,170,0.08), transparent 70%);"></div>
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-balance">
+        Vrei un partener pentru tot ecosistemul?
+      </h2>
+      <p class="text-base sm:text-lg md:text-xl text-white/70 mb-8 md:mb-10 max-w-2xl mx-auto text-balance">
+        De la SEO și website la social media, email, design și vânzări — construim sistemul care aduce proiecte, nu doar metrici.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3.5 justify-center items-center flex-wrap">
+        <LiquidGlassButton href="/contact" variant="glass-primary">Contactează-ne</LiquidGlassButton>
+        <LiquidGlassButton href="/studii-de-caz" variant="glass-secondary">Alte studii de caz</LiquidGlassButton>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .case-hero,
+  .case-section {
+    background: radial-gradient(circle at 50% 0%, #16332b 0%, #0a0e1a 60%);
+  }
+  .case-section-alt {
+    background: radial-gradient(circle at 70% 50%, #16332b 0%, #0a0e1a 60%);
+  }
+  .case-cta {
+    background: radial-gradient(circle at 50% 100%, #16332b 0%, #0a0e1a 60%);
+  }
+  .case-hero-glow {
+    background: rgba(64, 255, 170, 0.12);
+    filter: blur(60px);
+  }
+  .case-logo-light {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  }
+</style>

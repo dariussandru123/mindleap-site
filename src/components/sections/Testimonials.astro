@@ -1,0 +1,49 @@
+---
+import { TESTIMONIALS } from '@/lib/constants';
+import { SITE } from '@/config/site';
+import TestimonialsCarousel from '@/components/ui/TestimonialsCarousel';
+---
+
+<section class="py-16 md:py-24 bg-black text-white w-full" aria-label="Testimoniale">
+  <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-balance">
+      Ce spun clienții noștri?
+    </h2>
+    
+    <div class="max-w-6xl mx-auto">
+      <TestimonialsCarousel 
+        client:load 
+        autoPlay={true} 
+        interval={5000}
+        testimonials={TESTIMONIALS}
+      />
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": TESTIMONIALS.map((testimonial, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": testimonial.author
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": testimonial.rating,
+        "bestRating": 5
+      },
+      "reviewBody": testimonial.content,
+      "itemReviewed": {
+        "@type": "Organization",
+        "name": SITE.name
+      }
+    }
+  }))
+})} />
+

@@ -1,0 +1,34 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import USP from '@/components/sections/USP.astro';
+import Manifest from '@/components/sections/Manifest.astro';
+import Testimonials from '@/components/sections/Testimonials.astro';
+import Process from '@/components/sections/Process.astro';
+import CompanyCarousel from '@/components/sections/CompanyCarousel.astro';
+import ServicesEcosystem from '@/components/sections/ServicesEcosystem.astro';
+import CTA from '@/components/sections/CTA.astro';
+import FAQ from '@/components/sections/FAQ.astro';
+import '@/styles/global.css';
+
+const breadcrumbs = [
+  { name: 'Acasă', href: '/' },
+];
+---
+
+<BaseLayout
+  title="Mindleap - Agenție de Marketing Digital"
+  description="Agenție de marketing digital specializată în servicii complete de marketing: audit ecosystem marketing, social media management, reels/short form video, email marketing, copywriting, advertising, design graphic."
+  breadcrumbs={breadcrumbs}
+>
+  <Hero />
+  <USP />
+  <Manifest />
+  <ServicesEcosystem />
+  <CompanyCarousel />
+  <Testimonials />
+  <Process />
+  <CTA />
+  <FAQ />
+</BaseLayout>
+

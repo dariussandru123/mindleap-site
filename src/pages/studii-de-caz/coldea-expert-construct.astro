@@ -1,0 +1,398 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SpotlightCard from '@/components/ui/SpotlightCard';
+import Stepper from '@/components/ui/Stepper';
+import AnimatedNumberCard from '@/components/ui/AnimatedNumberCard';
+import ImageLightbox from '@/components/ui/ImageLightbox';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton.astro';
+import { SERVICES, SITE } from '@/config/site';
+import { TESTIMONIALS } from '@/lib/constants';
+import '@/styles/global.css';
+
+const breadcrumbs = [
+  { name: 'Acasă', href: '/' },
+  { name: 'Studii de caz', href: '/studii-de-caz' },
+  { name: 'Coldea Expert Construct', href: '/studii-de-caz/coldea-expert-construct' },
+];
+---
+
+<BaseLayout
+  title="Studiu de caz: Coldea Expert Construct - Mindleap"
+  description="Descoperă cum am ajutat Coldea Expert Construct să-și crească business-ul prin strategii de marketing digital bazate pe metodologia Jobs-to-be-Done."
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero -->
+  <section class="case-hero-image relative w-full pt-28 pb-20 md:pt-32 md:pb-24 text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="/studii-de-caz/coldea-expert-construct/hero.webp"
+        alt="Coldea Expert Construct Team"
+        class="w-full h-full object-cover"
+        style="object-position: center 20%;"
+        width="1920"
+        height="800"
+        loading="eager"
+      />
+      <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(10,14,26,0.85) 0%, rgba(22,51,43,0.75) 50%, rgba(10,14,26,0.9) 100%);"></div>
+      <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="mb-4">
+        <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">
+          Studiu de caz
+        </span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-5 text-balance leading-tight">
+        Coldea Expert Construct
+      </h1>
+      <p class="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl mx-auto text-balance leading-relaxed">
+        Creștere scalabilă prin marketing strategic
+      </p>
+    </div>
+  </section>
+
+  <!-- Context -->
+  <section class="case-section relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute top-0 left-0 w-full md:w-1/2 h-full" style="background: radial-gradient(circle at 30% 40%, rgba(64,255,170,0.10), transparent 50%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <SpotlightCard client:visible spotlightColor="rgba(64, 255, 170, 0.2)" className="!p-5 md:!p-6 rounded-xl">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-white leading-tight">
+            Contextul colaborării
+          </h2>
+          <div class="space-y-4 text-base sm:text-lg text-white/75 leading-relaxed">
+            <p>
+              Colaborarea cu Coldea Expert Construct a început în august 2024, într-o perioadă de 6 luni dedicată testării, optimizării și discuțiilor despre obiective. În această perioadă, am lucrat împreună pentru a realiza profilul de client ideal și structura proceselor de marketing.
+            </p>
+            <p>
+              Abordarea noastră a pornit dintr-o întrebare simplă: ce trebuia să facă marketingul pentru Coldea — nu ce postări să punem. Răspunsul: să aducă proiecte mari și profitabile, fără să consume echipa cu oferte care nu se închidă niciodată.
+            </p>
+          </div>
+        </SpotlightCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementare JTBD -->
+  <section class="case-section case-section-alt relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(circle at 70% 30%, rgba(64,255,170,0.08), transparent 55%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto mb-8 md:mb-10 text-center">
+        <div class="mb-4">
+          <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">
+            Proces
+          </span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-white leading-tight text-balance">
+          De la haos de cereri la proiecte care merită efortul
+        </h2>
+        <p class="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl mx-auto">
+          Coldea crescuse, dar marketingul aducea volum — nu calitate. Iată cum am structurat totul, pas cu pas.
+        </p>
+      </div>
+
+      <div class="max-w-5xl mx-auto">
+        <Stepper
+          client:only="react"
+          initialStep={1}
+          autoPlay={false}
+          autoPlayInterval={4000}
+          showNavigation={true}
+          backButtonText="Înapoi"
+          nextButtonText="Următorul"
+          stepCircleContainerClassName="bg-black/40 backdrop-blur-sm"
+          contentClassName="text-white"
+          steps={[
+            {
+              title: 'Ce trebuia să rezolve marketingul',
+              content: 'Nu reach sau like-uri. Proiecte de execuție cu marjă bună — lucrări unde experiența și standardele Coldea contează, nu doar cel mai mic preț de pe piață.'
+            },
+            {
+              title: 'Am tras linia — cine e clientul potrivit',
+              content: 'Buget, locație, complexitate: trei criterii clare ca echipa să știe din start dacă merită să intre în ofertare. Fără asta, orice cerere pare o oportunitate — și pierzi timp.'
+            },
+            {
+              title: 'Am pregătit clientul înainte de primul mesaj',
+              content: 'Conținut educațional pe social media: standarde tehnice, calitate reală, exemple din șantier. Când prospectul scrie, știe deja la ce nivel lucrează Coldea.'
+            },
+            {
+              title: 'Am lăsat funnel-ul să filtreze restul',
+              content: 'Mesaje și sisteme care descurajează cererile low-budget înainte să ajungă la echipă. Mai puține conversații inutile, mai mult timp pe proiecte serioase.'
+            },
+            {
+              title: 'Am pivotat poziționarea',
+              content: 'Mesaje și portofoliu orientate spre arhitecți și clienți premium — parteneri care caută execuție de încredere, nu pe cine licitează la cel mai mic preț.'
+            },
+            {
+              title: 'Ce am vrut să obținem',
+              content: 'Să scadă timpul pierdut cu oferte respinse din cauza prețului. Și să crească ponderea proiectelor care chiar se semnează — nu doar celor care sună bine la telefon.'
+            }
+          ]}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicii -->
+  <section class="case-section relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute top-0 left-0 w-full md:w-1/2 h-full" style="background: radial-gradient(circle at 30% 40%, rgba(64,255,170,0.10), transparent 50%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto mb-8 md:mb-10 text-center">
+        <div class="mb-4">
+          <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">
+            Ce am livrat
+          </span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-white leading-tight">
+          Servicii oferite
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+        <SpotlightCard client:visible spotlightColor="rgba(64, 255, 170, 0.2)" className="!p-5 md:!p-6 rounded-xl h-full">
+          <h3 class="text-lg md:text-xl font-bold mb-4 text-primary-mint">
+            {SERVICES['crestere-organica'].name}
+          </h3>
+          <ul class="space-y-2 text-white/75 text-sm leading-relaxed">
+            <li class="flex flex-col items-start">
+              <span class="flex items-start w-full">
+                <span class="mr-2 text-primary-mint">•</span>
+                <span>Administrare conturi social media</span>
+              </span>
+              <ul class="ml-4 mt-1 space-y-1 text-white/55 text-xs">
+                <li class="flex items-start"><span class="mr-2 text-primary-mint/60">–</span><span>Facebook</span></li>
+                <li class="flex items-start"><span class="mr-2 text-primary-mint/60">–</span><span>Instagram</span></li>
+                <li class="flex items-start"><span class="mr-2 text-primary-mint/60">–</span><span>TikTok</span></li>
+                <li class="flex items-start"><span class="mr-2 text-primary-mint/60">–</span><span>LinkedIn</span></li>
+              </ul>
+            </li>
+            <li class="flex items-start"><span class="mr-2 text-primary-mint">•</span><span>Configurare Google Business Profile</span></li>
+            <li class="flex items-start"><span class="mr-2 text-primary-mint">•</span><span>Colectare recenzii REALE</span></li>
+          </ul>
+        </SpotlightCard>
+
+        <SpotlightCard client:visible spotlightColor="rgba(64, 255, 170, 0.2)" className="!p-5 md:!p-6 rounded-xl h-full">
+          <h3 class="text-lg md:text-xl font-bold mb-4 text-primary-mint">
+            {SERVICES.creative.name}
+          </h3>
+          <ul class="space-y-2 text-white/75 text-sm leading-relaxed">
+            <li class="flex items-start"><span class="mr-2 text-primary-mint">•</span><span>Design colant dubă</span></li>
+            <li class="flex items-start"><span class="mr-2 text-primary-mint">•</span><span>Design tricouri</span></li>
+            <li class="flex items-start"><span class="mr-2 text-primary-mint">•</span><span>Grafică pentru postări social media</span></li>
+            <li class="flex items-start"><span class="mr-2 text-primary-mint">•</span><span>Realizare poze</span></li>
+            <li class="flex items-start"><span class="mr-2 text-primary-mint">•</span><span>Foto/video pentru social media</span></li>
+            <li class="flex items-start"><span class="mr-2 text-primary-mint">•</span><span>Descrieri persuasive pentru social media</span></li>
+            <li class="flex items-start"><span class="mr-2 text-primary-mint">•</span><span>Copywriting pentru website</span></li>
+            <li class="flex items-start">
+              <span class="mr-2 text-primary-mint">•</span>
+              <span>Realizare website complet — <a href="https://expert-construct.ro" target="_blank" rel="noopener noreferrer" class="text-primary-mint hover:underline">expert-construct.ro</a></span>
+            </li>
+          </ul>
+        </SpotlightCard>
+
+        <SpotlightCard client:visible spotlightColor="rgba(64, 255, 170, 0.2)" className="!p-5 md:!p-6 rounded-xl h-full">
+          <h3 class="text-lg md:text-xl font-bold mb-4 text-primary-mint">
+            {SERVICES.consultanta.name}
+          </h3>
+          <ul class="space-y-2 text-white/75 text-sm leading-relaxed">
+            <li class="flex items-start"><span class="mr-2 text-primary-mint">•</span><span>Analiză audiență și date</span></li>
+            <li class="flex items-start"><span class="mr-2 text-primary-mint">•</span><span>Optimizare experiență utilizator UI/UX</span></li>
+          </ul>
+        </SpotlightCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rezultate -->
+  <section class="case-section case-section-alt relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(64,255,170,0.08), transparent 70%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto mb-8 md:mb-10 text-center">
+        <div class="mb-4">
+          <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">
+            Impact
+          </span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-white leading-tight">
+          Rezultate pentru anul 2025
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-6 md:mb-8">
+        <AnimatedNumberCard
+          client:only="react"
+          title="Creștere angajați"
+          initialValue={5}
+          value={12}
+          suffix=" angajați"
+          color="rgba(64, 255, 170, 1)"
+          delay={0}
+        />
+        <AnimatedNumberCard
+          client:only="react"
+          title="Urmăritori social media"
+          initialValue={2000}
+          value={30000}
+          suffix="+"
+          color="rgba(64, 255, 170, 0.85)"
+          delay={150}
+        />
+        <AnimatedNumberCard
+          client:only="react"
+          title="Mesaje primite"
+          initialValue={0}
+          value={30}
+          suffix="+"
+          color="rgba(64, 255, 170, 0.7)"
+          delay={300}
+        />
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <SpotlightCard client:visible spotlightColor="rgba(64, 255, 170, 0.2)" className="!p-5 md:!p-6 rounded-xl">
+          <p class="text-base sm:text-lg text-white/75 leading-relaxed">
+            Rezultatele pentru anul 2025 au fost foarte mulțumitoare și clare: creșterea numărului de angajați de la 5 la 12, preluarea și executarea unor proiecte de top, acumularea unui pool de peste 30.000 de urmăritori pe social media în mai puțin de 12 luni de la definirea profilului psihografic, a customer persona și documentelor interne pentru funnel, procese etc.
+          </p>
+        </SpotlightCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galerie -->
+  <section class="case-section relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute top-0 right-0 w-full md:w-1/2 h-full" style="background: radial-gradient(circle at 70% 30%, rgba(64,255,170,0.08), transparent 55%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto mb-8 md:mb-10 text-center">
+        <div class="mb-4">
+          <span class="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">
+            Dovezi
+          </span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-white leading-tight">
+          Galerie rezultate
+        </h2>
+      </div>
+
+      <ImageLightbox
+        client:only="react"
+        images={[
+          { src: '/studii-de-caz/coldea-expert-construct/cec-insta-before.jpeg', alt: 'Instagram - Înainte' },
+          { src: '/studii-de-caz/coldea-expert-construct/cec-insta-meanwhile.jpeg', alt: 'Instagram - În timpul colaborării' },
+          { src: '/studii-de-caz/coldea-expert-construct/cec-insta-now.jpeg', alt: 'Instagram - Acum' },
+          { src: '/studii-de-caz/coldea-expert-construct/cec-meta.jpeg', alt: 'Meta Analytics' },
+          { src: '/studii-de-caz/coldea-expert-construct/cec-tiktok-followers.jpeg', alt: 'TikTok - Urmăritori' },
+          { src: '/studii-de-caz/coldea-expert-construct/cec-tiktok-overall-1year.jpeg', alt: 'TikTok - Rezultate 1 an' },
+          { src: '/studii-de-caz/coldea-expert-construct/cec-databox-1an-dupa-colaborare.webp', alt: 'Databox - Rezultate 1 an după colaborare' },
+          { src: '/studii-de-caz/coldea-expert-construct/cec-lucrati-peste-tot.webp', alt: 'Mesaje primite - Lucrați peste tot' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="case-section case-section-alt relative py-16 md:py-24 w-full text-white overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(64,255,170,0.08), transparent 70%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {(() => {
+        const bogdanTestimonial = TESTIMONIALS.find(t => t.author === 'Bogdan Coldea');
+        if (!bogdanTestimonial) return null;
+        return (
+          <div class="max-w-4xl mx-auto">
+            <SpotlightCard client:visible spotlightColor="rgba(64, 255, 170, 0.2)" className="!p-5 md:!p-6 rounded-xl">
+              <blockquote class="mb-5">
+                <p class="text-base sm:text-lg text-white/80 leading-relaxed italic">
+                  "{bogdanTestimonial.content}"
+                </p>
+              </blockquote>
+              <div class="flex items-center justify-between gap-4 pt-4 border-t border-white/10">
+                <div>
+                  <cite class="not-italic font-semibold text-white text-lg md:text-xl block">
+                    {bogdanTestimonial.author}
+                  </cite>
+                  <p class="text-white/60 text-sm mt-1">
+                    {bogdanTestimonial.role}{bogdanTestimonial.role && bogdanTestimonial.company ? ', ' : ''}{bogdanTestimonial.company}
+                  </p>
+                </div>
+                <div class="flex text-yellow-400 text-lg flex-shrink-0" aria-label={`${bogdanTestimonial.rating} din 5 stele`}>
+                  {(() => {
+                    const stars = [];
+                    for (let i = 0; i < bogdanTestimonial.rating; i++) {
+                      stars.push(<span aria-hidden="true">★</span>);
+                    }
+                    return stars;
+                  })()}
+                </div>
+              </div>
+            </SpotlightCard>
+          </div>
+        );
+      })()}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="case-cta relative py-16 md:py-24 text-white w-full overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(64,255,170,0.08), transparent 70%);"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-balance">
+        Hai să lucrăm împreună
+      </h2>
+      <p class="text-base sm:text-lg md:text-xl text-white/70 mb-8 md:mb-10 max-w-2xl mx-auto text-balance">
+        Contactează-ne astăzi pentru o consultație gratuită și descoperă cum putem ajuta business-ul tău să crească.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3.5 justify-center items-center flex-wrap">
+        <LiquidGlassButton href="/contact" variant="glass-primary">
+          Contactează-ne
+        </LiquidGlassButton>
+        <LiquidGlassButton
+          href={`https://wa.me/${SITE.whatsapp}`}
+          variant="glass-secondary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+          <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </LiquidGlassButton>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .case-hero-image {
+    min-height: 320px;
+  }
+
+  @media (min-width: 768px) {
+    .case-hero-image {
+      min-height: 380px;
+    }
+  }
+
+  .case-section {
+    background: radial-gradient(circle at 50% 0%, #16332b 0%, #0a0e1a 60%);
+  }
+
+  .case-section-alt {
+    background: radial-gradient(circle at 70% 50%, #16332b 0%, #0a0e1a 60%);
+  }
+
+  .case-cta {
+    background: radial-gradient(circle at 50% 100%, #16332b 0%, #0a0e1a 60%);
+  }
+
+  .mint-highlight {
+    font-weight: 700;
+    color: #40ffaa;
+  }
+</style>
